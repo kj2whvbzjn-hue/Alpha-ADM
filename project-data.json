@@ -2330,7 +2330,8 @@
             "source_node_id": "AIN-0001"
           }
         }
-      }
+      },
+      "result_slots": []
     }
   ],
   "design_cards": [],
