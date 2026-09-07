@@ -1,0 +1,2576 @@
+{
+  "schema_version": "4.0.0-draft",
+  "project": {
+    "id": "PRJ-GAS-V4",
+    "name": "Guild Adventure Studio",
+    "product_version": "4.0.0",
+    "status": "development",
+    "description": "AIと人間が共同でゲーム開発する統合開発環境",
+    "updated_at": "2026-09-04T15:37:12.107Z"
+  },
+  "decisions": [
+    {
+      "id": "DEC-V4-001",
+      "status": "Approved",
+      "text": "Guild Adventure Studio Version 4を最優先開発対象とする",
+      "refs": [],
+      "created_at": "2026-07-23T08:57:06.612Z"
+    },
+    {
+      "id": "DEC-V4-003",
+      "status": "Approved",
+      "text": "JSONを唯一の正本とする",
+      "refs": [],
+      "created_at": "2026-07-23T08:57:06.612Z"
+    },
+    {
+      "id": "DEC-V4-006",
+      "status": "Approved",
+      "text": "AI変更はHuman Approvalを必須とする",
+      "refs": [],
+      "created_at": "2026-07-23T08:57:06.612Z"
+    }
+  ],
+  "chapters": [],
+  "characters": [
+    {
+      "id": "CHR-0001",
+      "name": "とくぴす",
+      "role": "マンジャロの布教",
+      "job": "キャバ嬢",
+      "profile": "怒られる",
+      "status": "draft",
+      "created_at": "2026-07-23T10:26:12.089Z",
+      "updated_at": "2026-07-23T10:26:12.089Z",
+      "race": "",
+      "age": "",
+      "speech": "",
+      "organization_id": "",
+      "first_appearance": "",
+      "join_point": "",
+      "leave_point": "",
+      "awaken_point": "",
+      "goals": [
+        "",
+        "",
+        ""
+      ],
+      "event_history": []
+    }
+  ],
+  "entities": [],
+  "id_counters": {},
+  "history": [
+    {
+      "at": "2026-07-24T04:00:42.901Z",
+      "message": "chapter added from visual editor"
+    },
+    {
+      "at": "2026-07-24T04:01:27.920Z",
+      "message": "section added from visual editor"
+    },
+    {
+      "at": "2026-07-25T17:16:14.618Z",
+      "message": "github pull"
+    },
+    {
+      "at": "2026-07-26T00:34:25.117Z",
+      "message": "github pull"
+    },
+    {
+      "at": "2026-07-26T00:42:08.840Z",
+      "message": "github pull"
+    },
+    {
+      "at": "2026-07-26T00:46:34.016Z",
+      "message": "github pull"
+    },
+    {
+      "at": "2026-07-26T00:46:58.057Z",
+      "message": "github push"
+    },
+    {
+      "at": "2026-07-26T00:47:05.328Z",
+      "message": "github push"
+    },
+    {
+      "at": "2026-08-30T05:20:00+09:00",
+      "message": "Formal Passive Master: PAS-0001 registered with DUAL_WIELD runtime contract."
+    },
+    {
+      "at": "2026-08-29T23:16:54.949Z",
+      "message": "full json imported through preflight gate"
+    },
+    {
+      "at": "2026-08-30T08:37:00+09:00",
+      "message": "Fresh Current GKS-B803 Exportから既存Game Data 104件をProject Authorityへ復元し、既存Formal Passive PAS-0001を保持して完全Project JSONを生成。"
+    },
+    {
+      "at": "2026-08-30T08:50:00+09:00",
+      "message": "GK_AI_FIX_FULL_IMPORT_2026-08-29T23-44-26-319Z.json のvalidation_report/auditsに従い、未登録TAG-0001～TAG-0005を最小Tag Masterとして登録し、規約外Passive ID PAS-DUAL-WIELD-001をPAS-0001へ変更、passiveSeriesId/runtimeContracts参照を同期した。"
+    },
+    {
+      "at": "2026-08-29T23:51:22.193Z",
+      "message": "full json imported through preflight gate"
+    },
+    {
+      "at": "2026-08-30T00:45:34.717Z",
+      "message": "full json imported through preflight gate"
+    },
+    {
+      "at": "2026-08-31T19:02:00+09:00",
+      "message": "TASK-FRM-004 review fix: partial Game Data placement was unavailable, so full Project JSON was regenerated from PRJ-GAS-V4 current authority. Added default_formation_position=FRONTLINE to all existing Monster Master records only; no other Game Data semantics were intentionally changed."
+    },
+    {
+      "at": "2026-08-31T10:03:19.558Z",
+      "message": "full json imported through preflight gate"
+    },
+    {
+      "at": "2026-09-01T13:02:00+09:00",
+      "message": "DEV-V9-LEGACY-BATTLE-RUNTIME-CLEANUP-001 GAME_DATA Task A: Human-approved Current ownerとして ADV-0001 params.game_runtime.character.initial_hp=100 / initial_mp=30 を追加。旧 game_runtime.battle_actor はSource切替前のため保持。その他Game Data semanticsは変更しない。"
+    },
+    {
+      "at": "2026-09-01T13:05:00+09:00",
+      "message": "DEV-V9-LEGACY-BATTLE-RUNTIME-CLEANUP-001 TASK-LBRC-002C: Source cutover後、ADV-0001 game_runtime.battle_actor legacy Formula containerを削除。game_runtime.character.initial_hp=100 / initial_mp=30を正規ownerとして維持。"
+    },
+    {
+      "at": "2026-09-01T04:22:35.174Z",
+      "message": "full json imported through preflight gate"
+    },
+    {
+      "at": "2026-09-01T16:52:00+09:00",
+      "message": "TASK-LBRC-007A GAME_DATA_UPDATE: Human-approved EVD-0001 Current AuthorityへJob Growthを同期。masters.jobs 7職のaptitudesをCurrent seedへ置換し、JOB-0004名称を『狩人』へ同期。ADV-0001 game_runtime.growth.outcomes_by_aptitudeは一般成長式からCurrent使用値3/4/7/8/10/13/15を再生成。旧7..13専用成長テーブルをCurrent実行入力から除去。Source変更なし。rank_by_aptitudeは表示用であり、今回のEVD-0001 Authorityは3/4/15のRank名称を定義していないため変更しない。"
+    },
+    {
+      "at": "2026-09-01T17:38:00+09:00",
+      "message": "TASK-LBRC-008A GAME_DATA cleanup candidate: Current Product Skill MasterからR06大量複合検査48件を削除。これらはprotected g06-r06-48-skill-batch fixtureと48/48でauthoring payload一致するGenerator検査生成物であり、EVD-0009 provisional catalogの正式Product Master昇格ではない。ADV-0001 starter_skill_ids / starter_equipped_skill_idはdangling reference防止のため空へ変更。EVD-0009候補はProduct Masterへ自動昇格しない。"
+    },
+    {
+      "at": "2026-09-01T08:54:40.666Z",
+      "message": "full json imported through preflight gate"
+    },
+    {
+      "at": "2026-09-04T03:57:57.278Z",
+      "message": "full json imported through preflight gate"
+    },
+    {
+      "at": "2026-09-04T04:24:29.940Z",
+      "message": "backup restore"
+    },
+    {
+      "at": "2026-09-04T05:08:45.705Z",
+      "message": "full json imported through preflight gate"
+    },
+    {
+      "at": "2026-09-04T15:37:12.107Z",
+      "message": "full json imported through preflight gate"
+    }
+  ],
+  "quests": [
+    {
+      "id": "QST-0002",
+      "name": "実機検証：ランダム戦闘＋報酬集計",
+      "type": "event",
+      "status": "active",
+      "summary": "Studio→Export→Game運用確認用。15秒でRandom戦闘、30秒でRandom報酬Event。最終期待値はGold 100＋素材5個。",
+      "adventure_duration_seconds": 30,
+      "base_enemy_budget": 3,
+      "enemy_budget": 3,
+      "start_cost": {
+        "gold": 0,
+        "resources": {}
+      },
+      "prerequisite_ids": [],
+      "next_quest_ids": [],
+      "required_flags": [],
+      "set_flags": [],
+      "context": {
+        "map_id": "MAP-0001",
+        "environment_tags": [
+          "ops-test",
+          "training_ground"
+        ],
+        "difficulty": 3,
+        "budget": {
+          "policy": "standard"
+        }
+      },
+      "boxes": [
+        {
+          "box_id": "BOX-QST-OPS-01",
+          "name": "実機運用確認",
+          "order": 1,
+          "pre_scene_id": null,
+          "mid_scene_id": null,
+          "post_scene_id": null,
+          "event_zone_before_pre": [
+            {
+              "kind": "random_event",
+              "order": 1,
+              "failure_policy": "quest_fail",
+              "filter": {
+                "event_type": "battle",
+                "group": "OPS-E2E",
+                "tags": [
+                  "ops-test",
+                  "battle"
+                ]
+              },
+              "allow_none": false,
+              "required": true,
+              "box_side_individual_probability_override": false
+            }
+          ],
+          "event_zone_pre_to_mid": [],
+          "event_zone_mid_to_post": [],
+          "event_zone_after_post": [
+            {
+              "kind": "random_event",
+              "order": 1,
+              "failure_policy": "quest_fail",
+              "filter": {
+                "event_type": "special",
+                "group": "OPS-E2E",
+                "tags": [
+                  "ops-test",
+                  "reward"
+                ]
+              },
+              "allow_none": false,
+              "required": true,
+              "box_side_individual_probability_override": false
+            }
+          ]
+        }
+      ],
+      "created_at": "2026-08-15T23:57:19.007Z",
+      "updated_at": "2026-08-15T23:57:19.007Z",
+      "conditions": "",
+      "completion": "",
+      "rewards": "",
+      "failure": "",
+      "character_ids": []
+    },
+    {
+      "id": "QST-0003",
+      "name": "実機検証2：Budget必敗戦闘＋失敗後停止",
+      "type": "event",
+      "status": "active",
+      "summary": "クエスト失敗経路の実機検証。15秒で失敗前の仮報酬Event、30秒でEnemy Budget 400の守護者群戦。quest_fail後の到達禁止Eventが実行されないことを確認する。",
+      "adventure_duration_seconds": 30,
+      "base_enemy_budget": 400,
+      "enemy_budget": 400,
+      "start_cost": {
+        "gold": 0,
+        "resources": {}
+      },
+      "prerequisite_ids": [],
+      "next_quest_ids": [],
+      "required_flags": [],
+      "set_flags": [],
+      "context": {
+        "map_id": "MAP-0001",
+        "environment_tags": [
+          "demo2-fail"
+        ],
+        "difficulty": 400,
+        "budget": {
+          "policy": "standard"
+        }
+      },
+      "boxes": [
+        {
+          "box_id": "BOX-QST-OPS-FAIL-01",
+          "name": "実機失敗経路確認",
+          "order": 1,
+          "pre_scene_id": null,
+          "mid_scene_id": null,
+          "post_scene_id": null,
+          "event_zone_before_pre": [
+            {
+              "kind": "fixed_event",
+              "order": 1,
+              "failure_policy": "continue",
+              "event_id": "EVT-0007"
+            },
+            {
+              "kind": "fixed_event",
+              "order": 2,
+              "failure_policy": "quest_fail",
+              "event_id": "EVT-0008",
+              "encounter_override": {
+                "mode": "resolver",
+                "required_monsters": [],
+                "formation": [],
+                "scaling_profile_ref": null
+              }
+            }
+          ],
+          "event_zone_pre_to_mid": [],
+          "event_zone_mid_to_post": [],
+          "event_zone_after_post": [
+            {
+              "kind": "fixed_event",
+              "order": 1,
+              "failure_policy": "continue",
+              "event_id": "EVT-0009"
+            }
+          ]
+        }
+      ],
+      "created_at": "2026-08-16T01:20:00.000Z",
+      "updated_at": "2026-08-16T01:20:00.000Z",
+      "conditions": "",
+      "completion": "",
+      "rewards": "",
+      "failure": "Budget Resolverで生成された訓練守護者群に敗北するとQuest失敗。失敗後Eventは実行されない。",
+      "character_ids": []
+    },
+    {
+      "id": "QST-0004",
+      "name": "実機検証3準備：探索共鳴石板を入手",
+      "type": "event",
+      "status": "active",
+      "summary": "デモテスト3本体で使うTBL-0001を3個入手する準備Quest。帰還後に石板UIの所持数を確認する。",
+      "adventure_duration_seconds": 15,
+      "base_enemy_budget": 0,
+      "enemy_budget": 0,
+      "start_cost": {
+        "gold": 0,
+        "resources": {}
+      },
+      "prerequisite_ids": [],
+      "next_quest_ids": [
+        "QST-0005"
+      ],
+      "required_flags": [],
+      "set_flags": [],
+      "context": {
+        "map_id": "",
+        "environment_tags": [
+          "demo3-prepare"
+        ],
+        "difficulty": 0,
+        "budget": {
+          "policy": "standard"
+        }
+      },
+      "boxes": [
+        {
+          "box_id": "BOX-QST-OPS-STONE-PREP-01",
+          "name": "デモ3 石板支給",
+          "order": 1,
+          "pre_scene_id": null,
+          "mid_scene_id": null,
+          "post_scene_id": null,
+          "event_zone_before_pre": [
+            {
+              "kind": "fixed_event",
+              "order": 1,
+              "failure_policy": "continue",
+              "event_id": "EVT-0010"
+            }
+          ],
+          "event_zone_pre_to_mid": [],
+          "event_zone_mid_to_post": [],
+          "event_zone_after_post": []
+        }
+      ],
+      "created_at": "2026-08-16T01:41:00.000Z",
+      "updated_at": "2026-08-16T01:41:00.000Z",
+      "conditions": "",
+      "completion": "TBL-0001を3個獲得して帰還する。",
+      "rewards": "TBL-0001 ×3",
+      "failure": "",
+      "character_ids": []
+    },
+    {
+      "id": "QST-0005",
+      "name": "実機検証3：Stone＋探索＋再開Snapshot",
+      "type": "event",
+      "status": "active",
+      "summary": "TBL-0001を1個投入して開始。探索結果を確認後にページ再読込し、同一QuestRunのStone消費・探索結果・報酬が再抽選/再消費されず固定されることを確認する。",
+      "adventure_duration_seconds": 90,
+      "base_enemy_budget": 0,
+      "enemy_budget": 0,
+      "start_cost": {
+        "gold": 0,
+        "resources": {}
+      },
+      "prerequisite_ids": [
+        "QST-0004"
+      ],
+      "next_quest_ids": [],
+      "required_flags": [],
+      "set_flags": [],
+      "context": {
+        "map_id": "MAP-0001",
+        "environment_tags": [
+          "demo3-exploration"
+        ],
+        "difficulty": 0,
+        "budget": {
+          "policy": "standard"
+        }
+      },
+      "boxes": [
+        {
+          "box_id": "BOX-QST-OPS-STONE-EXP-01",
+          "name": "デモ3 Stone探索再開",
+          "order": 1,
+          "pre_scene_id": null,
+          "mid_scene_id": null,
+          "post_scene_id": null,
+          "event_zone_before_pre": [
+            {
+              "kind": "fixed_event",
+              "order": 1,
+              "failure_policy": "quest_fail",
+              "event_id": "EVT-0011"
+            }
+          ],
+          "event_zone_pre_to_mid": [],
+          "event_zone_mid_to_post": [
+            {
+              "kind": "fixed_event",
+              "order": 1,
+              "failure_policy": "continue",
+              "event_id": "EVT-0012"
+            }
+          ],
+          "event_zone_after_post": []
+        }
+      ],
+      "created_at": "2026-08-16T01:41:00.000Z",
+      "updated_at": "2026-08-16T01:41:00.000Z",
+      "conditions": "QST-0004完了後、依頼画面でTBL-0001を1個選択して開始する。",
+      "completion": "探索結果表示後にページ再読込→進行中Questへ戻り、同じ探索結果とStone消費1回のみを確認して帰還する。",
+      "rewards": "探索Outcome報酬＋再開チェックポイント報酬。",
+      "failure": "石板未投入では探索候補が存在せずquest_failとなる。",
+      "character_ids": []
+    },
+    {
+      "id": "QST-0006",
+      "name": "実機検証4：Story Battle Override",
+      "type": "guild",
+      "status": "approved",
+      "summary": "",
+      "conditions": "",
+      "completion": "",
+      "failure": "",
+      "rewards": "",
+      "prerequisite_ids": [],
+      "next_quest_ids": [],
+      "required_flags": [],
+      "set_flags": [],
+      "start_cost": {
+        "gold": 0,
+        "resources": {}
+      },
+      "adventure_duration_seconds": 30,
+      "base_enemy_budget": 7,
+      "enemy_budget": 7,
+      "context": {
+        "map_id": "MAP-0001",
+        "environment_tags": [
+          "ops-test"
+        ]
+      },
+      "boxes": [
+        {
+          "box_id": "BOX-0001",
+          "name": "Box 1",
+          "order": 1,
+          "pre_scene_id": null,
+          "mid_scene_id": null,
+          "post_scene_id": null,
+          "event_zone_before_pre": [
+            {
+              "kind": "fixed_event",
+              "event_id": "EVT-0013",
+              "failure_policy": "quest_fail",
+              "order": 1,
+              "encounter_override": {
+                "mode": "required_monsters",
+                "required_monsters": [
+                  {
+                    "monster_id": "MON-0004",
+                    "count": 1
+                  }
+                ],
+                "formation": [],
+                "scaling_profile_ref": null
+              }
+            }
+          ],
+          "event_zone_pre_to_mid": [],
+          "event_zone_mid_to_post": [],
+          "event_zone_after_post": []
+        }
+      ],
+      "updated_at": "2026-08-16T03:20:30.991Z",
+      "created_at": "2026-08-16T03:20:30.991Z",
+      "character_ids": []
+    }
+  ],
+  "events": [
+    {
+      "id": "EVT-0001",
+      "name": "王子の身分を隠す決意",
+      "usage": "story",
+      "type": "special",
+      "status": "draft",
+      "enabled": true,
+      "group": "CH01-SEC01",
+      "tags": [
+        "story",
+        "chapter1",
+        "section1",
+        "identity"
+      ],
+      "intensity": "low",
+      "random_base_weight": 1,
+      "generation_profile_ref": null,
+      "summary": "アルフレッドが王族としての身分を隠し、新兵アルフとして騎士団へ入る決意を固める。",
+      "results": "物語進行イベント。報酬・Flag変更なし。",
+      "required_flags": [],
+      "set_flags": [],
+      "reward_table_ids": [],
+      "created_at": "2026-08-15T01:32:28.917Z",
+      "updated_at": "2026-08-15T01:32:28.917Z",
+      "conditions": ""
+    },
+    {
+      "id": "EVT-0002",
+      "name": "王城を後にする",
+      "usage": "story",
+      "type": "special",
+      "status": "draft",
+      "enabled": true,
+      "group": "CH01-SEC01",
+      "tags": [
+        "story",
+        "chapter1",
+        "section1",
+        "departure"
+      ],
+      "intensity": "low",
+      "random_base_weight": 1,
+      "generation_profile_ref": null,
+      "summary": "革鎧を身につけたアルフレッドが、王子ではなく一人の新兵として王城を後にする。",
+      "results": "物語進行イベント。報酬・Flag変更なし。",
+      "required_flags": [],
+      "set_flags": [],
+      "reward_table_ids": [],
+      "created_at": "2026-08-15T01:32:28.917Z",
+      "updated_at": "2026-08-15T01:32:28.917Z",
+      "conditions": ""
+    },
+    {
+      "id": "EVT-0003",
+      "name": "ランスとの出会い",
+      "usage": "story",
+      "type": "special",
+      "status": "draft",
+      "enabled": true,
+      "group": "CH01-SEC01",
+      "tags": [
+        "story",
+        "chapter1",
+        "section1",
+        "encounter"
+      ],
+      "intensity": "low",
+      "random_base_weight": 1,
+      "generation_profile_ref": null,
+      "summary": "新兵アルフとして騎士団に入ったアルフレッドが、同期のランスと出会い握手を交わす。",
+      "results": "物語進行イベント。報酬・Flag変更なし。",
+      "required_flags": [],
+      "set_flags": [],
+      "reward_table_ids": [],
+      "created_at": "2026-08-15T01:32:28.917Z",
+      "updated_at": "2026-08-15T01:32:28.917Z",
+      "conditions": ""
+    },
+    {
+      "id": "EVT-0004",
+      "name": "実戦形式訓練の告知",
+      "usage": "story",
+      "type": "special",
+      "status": "draft",
+      "enabled": true,
+      "group": "CH01-SEC01",
+      "tags": [
+        "story",
+        "chapter1",
+        "section1",
+        "training"
+      ],
+      "intensity": "low",
+      "random_base_weight": 1,
+      "generation_profile_ref": null,
+      "summary": "初日の終わりにレオンが、翌日は実戦形式の訓練を行うと新兵たちへ告げる。",
+      "results": "次節への予告となる物語進行イベント。報酬・Flag変更なし。",
+      "required_flags": [],
+      "set_flags": [],
+      "reward_table_ids": [],
+      "created_at": "2026-08-15T01:32:28.917Z",
+      "updated_at": "2026-08-15T01:32:28.917Z",
+      "conditions": ""
+    },
+    {
+      "status": "active",
+      "enabled": true,
+      "group": "OPS-E2E",
+      "intensity": "normal",
+      "random_base_weight": 1,
+      "generation_profile_ref": null,
+      "required_flags": [],
+      "set_flags": [],
+      "conditions": "",
+      "created_at": "2026-08-15T23:57:19.007Z",
+      "updated_at": "2026-08-15T23:57:19.007Z",
+      "id": "EVT-0005",
+      "name": "実機検証：ランダム訓練戦闘",
+      "usage": "random",
+      "type": "battle",
+      "tags": [
+        "ops-test",
+        "battle"
+      ],
+      "summary": "訓練場のモンスターからEnemy Budget 3の編成をランダム生成して戦闘する。",
+      "results": "勝利時、Monster Dropの合計はGold 30＋MAT-OPS-BATTLE-TOKEN 3個。",
+      "reward_table_ids": []
+    },
+    {
+      "status": "active",
+      "enabled": true,
+      "group": "OPS-E2E",
+      "intensity": "normal",
+      "random_base_weight": 1,
+      "generation_profile_ref": null,
+      "required_flags": [],
+      "set_flags": [],
+      "conditions": "",
+      "created_at": "2026-08-15T23:57:19.007Z",
+      "updated_at": "2026-08-15T23:57:19.007Z",
+      "id": "EVT-0006",
+      "name": "実機検証：ランダム補給報酬",
+      "usage": "random",
+      "type": "special",
+      "tags": [
+        "ops-test",
+        "reward"
+      ],
+      "summary": "戦闘後に補給物資を発見するRandom Event。",
+      "results": "Gold 70＋MAT-OPS-EVENT-TOKEN 2個を確定する。",
+      "reward_table_ids": [
+        "RWD-0003"
+      ]
+    },
+    {
+      "usage": "story",
+      "status": "active",
+      "enabled": true,
+      "group": "OPS-FAIL-E2E",
+      "intensity": "low",
+      "random_base_weight": 1,
+      "generation_profile_ref": null,
+      "required_flags": [],
+      "conditions": "",
+      "created_at": "2026-08-16T01:20:00.000Z",
+      "updated_at": "2026-08-16T01:20:00.000Z",
+      "id": "EVT-0007",
+      "name": "デモ2：失敗前の補給確認",
+      "type": "special",
+      "tags": [
+        "demo2-fail",
+        "pre-fail"
+      ],
+      "summary": "必敗戦闘の前に仮報酬と到達Flagを確定する。",
+      "results": "Gold 11＋MAT-DEMO2-PRE-FAIL 1。Quest失敗時は報酬は全損する。",
+      "set_flags": [
+        "FLG-0001"
+      ],
+      "reward_table_ids": [
+        "RWD-0004"
+      ]
+    },
+    {
+      "usage": "story",
+      "status": "active",
+      "enabled": true,
+      "group": "OPS-FAIL-E2E",
+      "intensity": "extreme",
+      "random_base_weight": 1,
+      "generation_profile_ref": null,
+      "required_flags": [],
+      "conditions": "",
+      "created_at": "2026-08-16T01:20:00.000Z",
+      "updated_at": "2026-08-16T01:20:00.000Z",
+      "id": "EVT-0008",
+      "name": "デモ2：Budget圧力・訓練守護者群",
+      "type": "battle",
+      "tags": [
+        "demo2-fail",
+        "battle",
+        "forced-defeat"
+      ],
+      "summary": "Mapタグ＋Enemy Budgetの通常Resolverで訓練守護者群を生成し、quest_failによるQuest失敗経路を確認する。",
+      "results": "Enemy Budget 400 / Cost 10により40体編成。敗北してQuest失敗し、後続Eventは処理されない。",
+      "set_flags": [],
+      "reward_table_ids": []
+    },
+    {
+      "usage": "story",
+      "status": "active",
+      "enabled": true,
+      "group": "OPS-FAIL-E2E",
+      "intensity": "low",
+      "random_base_weight": 1,
+      "generation_profile_ref": null,
+      "required_flags": [],
+      "conditions": "",
+      "created_at": "2026-08-16T01:20:00.000Z",
+      "updated_at": "2026-08-16T01:20:00.000Z",
+      "id": "EVT-0009",
+      "name": "デモ2：失敗後の到達禁止Event",
+      "type": "special",
+      "tags": [
+        "demo2-fail",
+        "after-fail",
+        "sentinel"
+      ],
+      "summary": "必敗戦闘より後ろに置く検出用Event。quest_failが正常なら実行されない。",
+      "results": "誤実行時だけGold 999＋MAT-DEMO2-AFTER-FAIL 9とFLG-0002が発生する。正常時は何も発生しない。",
+      "set_flags": [
+        "FLG-0002"
+      ],
+      "reward_table_ids": [
+        "RWD-0005"
+      ]
+    },
+    {
+      "usage": "story",
+      "status": "active",
+      "enabled": true,
+      "group": "OPS-STONE-EXP-E2E",
+      "intensity": "low",
+      "random_base_weight": 1,
+      "generation_profile_ref": null,
+      "required_flags": [],
+      "set_flags": [],
+      "conditions": "",
+      "created_at": "2026-08-16T01:41:00.000Z",
+      "updated_at": "2026-08-16T01:41:00.000Z",
+      "id": "EVT-0010",
+      "name": "デモ3準備：探索共鳴石板の支給",
+      "type": "special",
+      "tags": [
+        "demo3",
+        "stone",
+        "prepare"
+      ],
+      "summary": "デモ3本体で使用する探索共鳴石板を支給する。",
+      "results": "TBL-0001を3個獲得。帰還Commit後、依頼画面の石板UIで所持数を確認する。",
+      "reward_table_ids": [
+        "RWD-0006"
+      ]
+    },
+    {
+      "usage": "story",
+      "status": "active",
+      "enabled": true,
+      "group": "OPS-STONE-EXP-E2E",
+      "intensity": "low",
+      "random_base_weight": 1,
+      "generation_profile_ref": null,
+      "required_flags": [],
+      "set_flags": [],
+      "conditions": "",
+      "created_at": "2026-08-16T01:41:00.000Z",
+      "updated_at": "2026-08-16T01:41:00.000Z",
+      "id": "EVT-0011",
+      "name": "デモ3：石板共鳴探索",
+      "type": "exploration",
+      "tags": [
+        "demo3",
+        "exploration",
+        "stone"
+      ],
+      "summary": "Stone環境タグとEffective Budgetを使って探索Outcomeを抽選する。",
+      "results": "Stone1個投入時は成功率1.00。Common/RareのどちらかをSnapshotし、再読込後も同じ結果を保持する。",
+      "reward_table_ids": []
+    },
+    {
+      "usage": "story",
+      "status": "active",
+      "enabled": true,
+      "group": "OPS-STONE-EXP-E2E",
+      "intensity": "low",
+      "random_base_weight": 1,
+      "generation_profile_ref": null,
+      "required_flags": [],
+      "set_flags": [],
+      "conditions": "",
+      "created_at": "2026-08-16T01:41:00.000Z",
+      "updated_at": "2026-08-16T01:41:00.000Z",
+      "id": "EVT-0012",
+      "name": "デモ3：再開後チェックポイント",
+      "type": "special",
+      "tags": [
+        "demo3",
+        "resume",
+        "reward"
+      ],
+      "summary": "探索結果確認後の再開・Snapshot固定とStone Budget報酬補正を確認する。",
+      "results": "石板1個投入時はGold14＋MAT-DEMO3-CHECKPOINT 1を期待。",
+      "reward_table_ids": [
+        "RWD-0010"
+      ]
+    },
+    {
+      "id": "EVT-0013",
+      "name": "デモ4：Story Battle Override戦",
+      "usage": "story",
+      "type": "battle",
+      "status": "approved",
+      "enabled": true,
+      "group": "OPS-OVERRIDE-E2E",
+      "tags": [
+        "demo4",
+        "story-battle-override"
+      ],
+      "intensity": "normal",
+      "random_base_weight": 1,
+      "generation_profile_ref": null,
+      "reward_table_ids": [],
+      "summary": "required_monsters＋残Budget生成を確認するBattle。",
+      "conditions": "",
+      "results": "MON-0004を必須1体、残Budgetは通常Resolverで生成。",
+      "required_flags": [],
+      "set_flags": [],
+      "updated_at": "2026-08-16T03:10:38.813Z",
+      "created_at": "2026-08-16T03:10:38.813Z"
+    }
+  ],
+  "organizations": [],
+  "terms": [],
+  "relationships": [],
+  "timeline": [],
+  "flags": [
+    {
+      "id": "FLG-0001",
+      "name": "デモ2：失敗前Event到達",
+      "category": "test",
+      "default_value": false,
+      "description": "QST-0003で必敗戦闘より前のEventが実行されたことを確認する実機検証Flag。",
+      "updated_at": "2026-08-16T01:20:00.000Z"
+    },
+    {
+      "id": "FLG-0002",
+      "name": "デモ2：失敗後Event到達（到達禁止）",
+      "category": "test",
+      "default_value": false,
+      "description": "QST-0003のquest_fail後に後続Eventが誤実行された場合だけONになる検出用Flag。正常時はOFFのまま。",
+      "updated_at": "2026-08-16T01:20:00.000Z"
+    }
+  ],
+  "battle_tests": [],
+  "battle_snapshots": [],
+  "masters": {
+    "stats": [],
+    "jobs": [
+      {
+        "id": "JOB-0001",
+        "name": "剣士",
+        "status": "active",
+        "tags": [],
+        "params": {
+          "aptitudes": {
+            "STR": 15,
+            "VIT": 13,
+            "AGI": 4,
+            "DEX": 10,
+            "INT": 7,
+            "MND": 8,
+            "LUK": 3
+          }
+        },
+        "description": "職業適性値。Game RuntimeはこのStudio Masterを参照し、コード内固定値を使用しません。"
+      },
+      {
+        "id": "JOB-0002",
+        "name": "騎士",
+        "status": "active",
+        "tags": [],
+        "params": {
+          "aptitudes": {
+            "STR": 10,
+            "VIT": 15,
+            "AGI": 3,
+            "DEX": 7,
+            "INT": 8,
+            "MND": 13,
+            "LUK": 4
+          }
+        },
+        "description": "職業適性値。Game RuntimeはこのStudio Masterを参照し、コード内固定値を使用しません。"
+      },
+      {
+        "id": "JOB-0003",
+        "name": "盗賊",
+        "status": "active",
+        "tags": [],
+        "params": {
+          "aptitudes": {
+            "STR": 7,
+            "VIT": 8,
+            "AGI": 15,
+            "DEX": 13,
+            "INT": 3,
+            "MND": 4,
+            "LUK": 10
+          }
+        },
+        "description": "職業適性値。Game RuntimeはこのStudio Masterを参照し、コード内固定値を使用しません。"
+      },
+      {
+        "id": "JOB-0004",
+        "name": "狩人",
+        "status": "active",
+        "tags": [],
+        "params": {
+          "aptitudes": {
+            "STR": 8,
+            "VIT": 7,
+            "AGI": 10,
+            "DEX": 15,
+            "INT": 4,
+            "MND": 3,
+            "LUK": 13
+          }
+        },
+        "description": "職業適性値。Game RuntimeはこのStudio Masterを参照し、コード内固定値を使用しません。"
+      },
+      {
+        "id": "JOB-0005",
+        "name": "魔術師",
+        "status": "active",
+        "tags": [],
+        "params": {
+          "aptitudes": {
+            "STR": 4,
+            "VIT": 3,
+            "AGI": 8,
+            "DEX": 10,
+            "INT": 15,
+            "MND": 13,
+            "LUK": 7
+          }
+        },
+        "description": "職業適性値。Game RuntimeはこのStudio Masterを参照し、コード内固定値を使用しません。"
+      },
+      {
+        "id": "JOB-0006",
+        "name": "神官",
+        "status": "active",
+        "tags": [],
+        "params": {
+          "aptitudes": {
+            "STR": 3,
+            "VIT": 4,
+            "AGI": 10,
+            "DEX": 7,
+            "INT": 13,
+            "MND": 15,
+            "LUK": 8
+          }
+        },
+        "description": "職業適性値。Game RuntimeはこのStudio Masterを参照し、コード内固定値を使用しません。"
+      },
+      {
+        "id": "JOB-0007",
+        "name": "冒険家",
+        "status": "active",
+        "tags": [],
+        "params": {
+          "aptitudes": {
+            "STR": 13,
+            "VIT": 10,
+            "AGI": 8,
+            "DEX": 3,
+            "INT": 4,
+            "MND": 7,
+            "LUK": 15
+          }
+        },
+        "description": "職業適性値。Game RuntimeはこのStudio Masterを参照し、コード内固定値を使用しません。"
+      }
+    ],
+    "skills": [],
+    "equipment": [],
+    "mods": [],
+    "monsters": [
+      {
+        "id": "MON-0001",
+        "name": "訓練用スライム",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0002"
+        ],
+        "params": {
+          "maxHp": 18,
+          "attack": 2,
+          "agi": 4,
+          "enemy_budget_cost": 1,
+          "spawn_weight": 3,
+          "spawn_tags": {
+            "any": [],
+            "all": [
+              "ops-test"
+            ],
+            "none": []
+          },
+          "drop_table_ids": [
+            "RWD-0001"
+          ]
+        },
+        "description": "実機検証用。Enemy Budget 1。撃破報酬はGold 10＋戦闘トークン1。",
+        "updated_at": "2026-08-15T23:57:19.007Z",
+        "default_formation_position": "FRONTLINE",
+        "formalAiBinding": {
+          "program_id": "AIP-0001",
+          "layout_id": "AIL-0001"
+        }
+      },
+      {
+        "id": "MON-0002",
+        "name": "訓練用ゴブリン",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0002"
+        ],
+        "params": {
+          "maxHp": 28,
+          "attack": 3,
+          "agi": 5,
+          "enemy_budget_cost": 2,
+          "spawn_weight": 1,
+          "spawn_tags": {
+            "any": [],
+            "all": [
+              "ops-test"
+            ],
+            "none": []
+          },
+          "drop_table_ids": [
+            "RWD-0002"
+          ]
+        },
+        "description": "実機検証用。Enemy Budget 2。撃破報酬はGold 20＋戦闘トークン2。",
+        "updated_at": "2026-08-15T23:57:19.007Z",
+        "default_formation_position": "FRONTLINE",
+        "formalAiBinding": {
+          "program_id": "AIP-0001",
+          "layout_id": "AIL-0001"
+        }
+      },
+      {
+        "id": "MON-0003",
+        "name": "デモ2訓練守護者",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0002"
+        ],
+        "params": {
+          "maxHp": 900,
+          "attack": 58,
+          "agi": 6,
+          "enemy_budget_cost": 10,
+          "spawn_weight": 1,
+          "spawn_tags": {
+            "any": [],
+            "all": [
+              "demo2-fail"
+            ],
+            "none": []
+          },
+          "drop_table_ids": []
+        },
+        "description": "デモテスト2専用。基礎能力は現行Game内のCランク守護者相当を基準とし、必敗性は固定の異常値ではなくQuest Enemy Budget 400によるBudget編成（40体）で作る。",
+        "updated_at": "2026-08-16T01:20:00.000Z",
+        "default_formation_position": "FRONTLINE",
+        "formalAiBinding": {
+          "program_id": "AIP-0001",
+          "layout_id": "AIL-0001"
+        }
+      },
+      {
+        "id": "MON-0004",
+        "name": "デモ4 指定訓練隊長",
+        "status": "active",
+        "tags": [
+          "TAG-0001",
+          "TAG-0002"
+        ],
+        "params": {
+          "maxHp": 45,
+          "attack": 4,
+          "agi": 6,
+          "spawn_weight": 1,
+          "enemy_budget_cost": 3,
+          "spawn_tags": {
+            "any": [],
+            "all": [
+              "demo4-required-only"
+            ],
+            "none": []
+          },
+          "drop_table_ids": [
+            "RWD-0011"
+          ]
+        },
+        "description": "",
+        "updated_at": "2026-08-16T03:01:08.292Z",
+        "default_formation_position": "FRONTLINE",
+        "formalAiBinding": {
+          "program_id": "AIP-0001",
+          "layout_id": "AIL-0001"
+        }
+      }
+    ],
+    "status_effects": [],
+    "tablets": [
+      {
+        "id": "TBL-0001",
+        "name": "デモ3 探索共鳴石板",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001"
+        ],
+        "params": {
+          "stone_level": 20,
+          "enemy_budget_bonus": 20,
+          "exploration_success_rate_add": 0.6,
+          "environment_tags_add": [
+            "demo3-stone-active"
+          ],
+          "environment_tags_remove": []
+        },
+        "description": "デモテスト3専用。投入1個でEnemy Budget +20。探索成功率+0.60と探索用環境タグを付与し、Stone投入・探索・再開Snapshot固定を検証する。",
+        "updated_at": "2026-08-16T01:41:00.000Z"
+      }
+    ],
+    "ai_conditions": [
+      {
+        "schema_version": "2.0.0",
+        "id": "AIC-0001",
+        "name": "常に成立",
+        "node_type": "condition",
+        "status": "deprecated",
+        "data_version": "0.1.0-draft",
+        "description": "常にTRUEへ進む最小条件チップ。",
+        "tags": [],
+        "evaluator": "condition.always",
+        "ports": {
+          "inputs": [
+            {
+              "id": "in",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "入口"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "true",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "YES"
+            },
+            {
+              "id": "false",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "NO"
+            }
+          ]
+        },
+        "parameter_schema": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        },
+        "unlock": {},
+        "supported_subject_kind": [
+          "UNIT",
+          "SELF",
+          "BATTLE"
+        ]
+      },
+      {
+        "schema_version": "2.0.0",
+        "id": "AIC-0002",
+        "name": "HP割合比較",
+        "node_type": "condition",
+        "status": "deprecated",
+        "data_version": "0.1.0-draft",
+        "description": "自分の現在HP割合が指定値未満ならTRUE。",
+        "tags": [],
+        "evaluator": "condition.hp_ratio_compare",
+        "ports": {
+          "inputs": [
+            {
+              "id": "in",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "入口"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "true",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "YES"
+            },
+            {
+              "id": "false",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "NO"
+            }
+          ]
+        },
+        "parameter_schema": {
+          "type": "object",
+          "properties": {
+            "operator": {
+              "type": "string",
+              "enum": [
+                "<",
+                "<=",
+                ">",
+                ">=",
+                "="
+              ]
+            },
+            "value": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "operator",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        "unlock": {},
+        "supported_subject_kind": [
+          "UNIT",
+          "SELF"
+        ]
+      },
+      {
+        "schema_version": "2.0.0",
+        "id": "AIC-0003",
+        "name": "自分MPが指定値以上",
+        "node_type": "condition",
+        "status": "deprecated",
+        "data_version": "0.1.0-draft",
+        "description": "自分の現在MPが指定値以上ならTRUE。",
+        "tags": [],
+        "evaluator": "condition.mp_at_least",
+        "ports": {
+          "inputs": [
+            {
+              "id": "in",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "入口"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "true",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "YES"
+            },
+            {
+              "id": "false",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "NO"
+            }
+          ]
+        },
+        "parameter_schema": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "number",
+              "title": "MP",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "amount"
+          ],
+          "additionalProperties": false
+        },
+        "unlock": {},
+        "supported_subject_kind": [
+          "SELF"
+        ]
+      },
+      {
+        "schema_version": "2.0.0",
+        "id": "AIC-0004",
+        "name": "状態管理",
+        "node_type": "condition",
+        "status": "active",
+        "data_version": "0.1.0-draft",
+        "description": "対象Unitの生存・死亡・HP・MPを状態管理Tagで選択して判定する汎用Predicate。",
+        "tags": [],
+        "evaluator": "condition.state_compare",
+        "ports": {
+          "inputs": [
+            {
+              "id": "in",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "入口"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "true",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "YES"
+            },
+            {
+              "id": "false",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "NO"
+            }
+          ]
+        },
+        "parameter_schema": {
+          "type": "object",
+          "properties": {
+            "state_tag_id": {
+              "type": "string",
+              "title": "状態",
+              "ref_kind": "tag",
+              "ref_category_id": "TGC-0006"
+            },
+            "value_mode": {
+              "type": "string",
+              "title": "見方",
+              "enum": [
+                "CURRENT",
+                "RATIO"
+              ]
+            },
+            "operator": {
+              "type": "string",
+              "title": "比較",
+              "enum": [
+                "<",
+                "<=",
+                ">",
+                ">=",
+                "="
+              ]
+            },
+            "value": {
+              "type": "number",
+              "title": "値",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "state_tag_id"
+          ],
+          "additionalProperties": false
+        },
+        "unlock": {},
+        "supported_subject_kind": [
+          "UNIT",
+          "SELF"
+        ]
+      }
+    ],
+    "ai_targets": [],
+    "ai_actions": [
+      {
+        "schema_version": "2.0.0",
+        "id": "AIA-0001",
+        "name": "通常攻撃",
+        "node_type": "action",
+        "status": "active",
+        "data_version": "0.1.0-draft",
+        "description": "通常攻撃を予約する終端チップ。",
+        "tags": [],
+        "evaluator": "action.attack",
+        "ports": {
+          "inputs": [
+            {
+              "id": "in",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "入口"
+            }
+          ],
+          "outputs": []
+        },
+        "parameter_schema": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        },
+        "unlock": {}
+      },
+      {
+        "schema_version": "2.0.0",
+        "id": "AIA-0002",
+        "name": "スキル使用",
+        "node_type": "action",
+        "status": "active",
+        "data_version": "0.1.0-draft",
+        "description": "指定した既存Skillを使用する終端チップ。",
+        "tags": [],
+        "evaluator": "action.skill",
+        "ports": {
+          "inputs": [
+            {
+              "id": "in",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "入口"
+            }
+          ],
+          "outputs": []
+        },
+        "parameter_schema": {
+          "type": "object",
+          "properties": {
+            "skill_id": {
+              "type": "string",
+              "title": "使用スキル",
+              "ref_kind": "skill"
+            }
+          },
+          "required": [
+            "skill_id"
+          ],
+          "additionalProperties": false
+        },
+        "unlock": {}
+      },
+      {
+        "schema_version": "2.0.0",
+        "id": "AIA-0003",
+        "name": "待機",
+        "node_type": "action",
+        "status": "active",
+        "data_version": "0.1.0-draft",
+        "description": "今回の判断を待機として確定する終端チップ。",
+        "tags": [],
+        "evaluator": "action.wait",
+        "ports": {
+          "inputs": [
+            {
+              "id": "in",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "入口"
+            }
+          ],
+          "outputs": []
+        },
+        "parameter_schema": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        },
+        "unlock": {}
+      }
+    ],
+    "passives": [
+      {
+        "id": "PAS-0001",
+        "name": "二刀流",
+        "status": "active",
+        "tags": [],
+        "passiveSeriesId": "PAS-0001",
+        "params": {
+          "ability_conditions": [],
+          "mod_ids": [],
+          "effect_ids": [],
+          "combat_capabilities": [
+            "DUAL_WIELD"
+          ]
+        },
+        "description": "二刀流Capabilityを付与する正式Passive。取得条件・職制限・習得Level・追加数値効果は未確定のため本Masterでは定義しない。",
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "",
+          "passiveSeriesId": "PAS-0001",
+          "abilityRequirementContracts": [],
+          "thresholdConsumption": {
+            "byStat": [],
+            "total": 0
+          },
+          "triggerContract": null,
+          "targetContract": null,
+          "executionContract": null,
+          "modifierRefs": {
+            "modIds": [],
+            "effectIds": [],
+            "combatCapabilities": [
+              "DUAL_WIELD"
+            ]
+          }
+        }
+      }
+    ],
+    "maps": [
+      {
+        "id": "MAP-0001",
+        "name": "実機検証用 訓練場",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0002",
+          "TAG-0003"
+        ],
+        "params": {},
+        "description": "Monster・Random Event・Reward集計の実機運用確認専用Map。",
+        "updated_at": "2026-08-15T23:57:19.007Z"
+      }
+    ],
+    "exploration_outcomes": [
+      {
+        "id": "EXP-0001",
+        "name": "デモ3 共鳴探索・通常発見",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001"
+        ],
+        "params": {
+          "environment_tags": {
+            "any": [],
+            "all": [
+              "demo3-exploration",
+              "demo3-stone-active"
+            ],
+            "none": []
+          },
+          "rarity": "common",
+          "base_weight": 10,
+          "success": {
+            "base_rate": 0.4,
+            "min_rate": 0,
+            "max_rate": 1
+          },
+          "on_success": {
+            "text": "石板の共鳴により通常の補給箱を発見した。",
+            "reward_table_ids": [
+              "RWD-0007"
+            ]
+          },
+          "on_failure": {
+            "text": "共鳴を追跡したが発見には至らなかった。",
+            "reward_table_ids": [
+              "RWD-0009"
+            ]
+          }
+        },
+        "description": "デモ3探索候補（Common）。Stoneが付与するdemo3-stone-activeがない場合は候補にならない。",
+        "updated_at": "2026-08-16T01:41:00.000Z"
+      },
+      {
+        "id": "EXP-0002",
+        "name": "デモ3 共鳴探索・希少発見",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001"
+        ],
+        "params": {
+          "environment_tags": {
+            "any": [],
+            "all": [
+              "demo3-exploration",
+              "demo3-stone-active"
+            ],
+            "none": []
+          },
+          "rarity": "rare",
+          "base_weight": 10,
+          "success": {
+            "base_rate": 0.4,
+            "min_rate": 0,
+            "max_rate": 1
+          },
+          "on_success": {
+            "text": "石板が強く共鳴し、希少な補給箱を発見した。",
+            "reward_table_ids": [
+              "RWD-0008"
+            ]
+          },
+          "on_failure": {
+            "text": "強い共鳴を追跡したが発見には至らなかった。",
+            "reward_table_ids": [
+              "RWD-0009"
+            ]
+          }
+        },
+        "description": "デモ3探索候補（Rare）。Effective BudgetによりRare weightが上昇する。Stone環境タグがない場合は候補にならない。",
+        "updated_at": "2026-08-16T01:41:00.000Z"
+      }
+    ],
+    "reward_tables": [
+      {
+        "id": "RWD-0001",
+        "name": "実機検証 Monster Drop / Budget 1",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0004"
+        ],
+        "params": {
+          "mode": "independent",
+          "entries": [
+            {
+              "kind": "gold",
+              "amount": 10,
+              "rate": 1,
+              "scaling_mode": "none"
+            },
+            {
+              "kind": "material",
+              "resource_id": "MAT-OPS-BATTLE-TOKEN",
+              "amount": 1,
+              "rate": 1,
+              "scaling_mode": "none"
+            }
+          ]
+        },
+        "description": "Enemy Budget 1につきGold 10＋戦闘トークン1。",
+        "updated_at": "2026-08-15T23:57:19.007Z"
+      },
+      {
+        "id": "RWD-0002",
+        "name": "実機検証 Monster Drop / Budget 2",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0004"
+        ],
+        "params": {
+          "mode": "independent",
+          "entries": [
+            {
+              "kind": "gold",
+              "amount": 20,
+              "rate": 1,
+              "scaling_mode": "none"
+            },
+            {
+              "kind": "material",
+              "resource_id": "MAT-OPS-BATTLE-TOKEN",
+              "amount": 2,
+              "rate": 1,
+              "scaling_mode": "none"
+            }
+          ]
+        },
+        "description": "Enemy Budget 2につきGold 20＋戦闘トークン2。",
+        "updated_at": "2026-08-15T23:57:19.007Z"
+      },
+      {
+        "id": "RWD-0003",
+        "name": "実機検証 Random Event Reward",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0005"
+        ],
+        "params": {
+          "mode": "independent",
+          "entries": [
+            {
+              "kind": "gold",
+              "amount": 70,
+              "rate": 1,
+              "scaling_mode": "none"
+            },
+            {
+              "kind": "material",
+              "resource_id": "MAT-OPS-EVENT-TOKEN",
+              "amount": 2,
+              "rate": 1,
+              "scaling_mode": "none"
+            }
+          ]
+        },
+        "description": "Random報酬Event確認用。Gold 70＋Eventトークン2。",
+        "updated_at": "2026-08-15T23:57:19.007Z"
+      },
+      {
+        "id": "RWD-0004",
+        "name": "デモ2 失敗前の仮報酬",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0005"
+        ],
+        "params": {
+          "mode": "independent",
+          "entries": [
+            {
+              "kind": "gold",
+              "amount": 11,
+              "rate": 1,
+              "scaling_mode": "none"
+            },
+            {
+              "kind": "material",
+              "resource_id": "MAT-DEMO2-PRE-FAIL",
+              "amount": 1,
+              "rate": 1,
+              "scaling_mode": "none"
+            }
+          ]
+        },
+        "description": "必敗戦闘前に一度確定させる検出用報酬。Quest失敗時は最終Saveへ反映されないことを確認する。",
+        "updated_at": "2026-08-16T01:20:00.000Z"
+      },
+      {
+        "id": "RWD-0005",
+        "name": "デモ2 失敗後の到達禁止報酬",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0005"
+        ],
+        "params": {
+          "mode": "independent",
+          "entries": [
+            {
+              "kind": "gold",
+              "amount": 999,
+              "rate": 1,
+              "scaling_mode": "none"
+            },
+            {
+              "kind": "material",
+              "resource_id": "MAT-DEMO2-AFTER-FAIL",
+              "amount": 9,
+              "rate": 1,
+              "scaling_mode": "none"
+            }
+          ]
+        },
+        "description": "quest_fail後のEventが誤実行された場合だけ見える検出用報酬。正常時はEvent自体が実行されない。",
+        "updated_at": "2026-08-16T01:20:00.000Z"
+      },
+      {
+        "id": "RWD-0006",
+        "name": "デモ3 準備用石板支給",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0005"
+        ],
+        "params": {
+          "mode": "independent",
+          "entries": [
+            {
+              "kind": "stone",
+              "stone_id": "TBL-0001",
+              "amount": 3,
+              "rate": 1,
+              "scaling_mode": "none"
+            }
+          ]
+        },
+        "description": "デモ3準備Quest完了時に探索共鳴石板を3個支給する。",
+        "updated_at": "2026-08-16T01:41:00.000Z"
+      },
+      {
+        "id": "RWD-0007",
+        "name": "デモ3 探索Common成功報酬",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0005"
+        ],
+        "params": {
+          "mode": "independent",
+          "entries": [
+            {
+              "kind": "gold",
+              "amount": 20,
+              "rate": 1,
+              "scaling_mode": "none"
+            },
+            {
+              "kind": "material",
+              "resource_id": "MAT-DEMO3-EXP-COMMON",
+              "amount": 1,
+              "rate": 1,
+              "scaling_mode": "none"
+            }
+          ]
+        },
+        "description": "Common探索結果識別用。Gold20＋Common token1。探索はBudget数量倍率を掛けない。",
+        "updated_at": "2026-08-16T01:41:00.000Z"
+      },
+      {
+        "id": "RWD-0008",
+        "name": "デモ3 探索Rare成功報酬",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0005"
+        ],
+        "params": {
+          "mode": "independent",
+          "entries": [
+            {
+              "kind": "gold",
+              "amount": 20,
+              "rate": 1,
+              "scaling_mode": "none"
+            },
+            {
+              "kind": "material",
+              "resource_id": "MAT-DEMO3-EXP-RARE",
+              "amount": 1,
+              "rate": 1,
+              "scaling_mode": "none"
+            }
+          ]
+        },
+        "description": "Rare探索結果識別用。Gold20＋Rare token1。再開後も同じtokenが表示されることを確認する。",
+        "updated_at": "2026-08-16T01:41:00.000Z"
+      },
+      {
+        "id": "RWD-0009",
+        "name": "デモ3 探索失敗識別報酬",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0005"
+        ],
+        "params": {
+          "mode": "independent",
+          "entries": [
+            {
+              "kind": "material",
+              "resource_id": "MAT-DEMO3-EXP-FAIL",
+              "amount": 1,
+              "rate": 1,
+              "scaling_mode": "none"
+            }
+          ]
+        },
+        "description": "探索チェック失敗を識別するためのtoken。石板1個投入時は成功率1.00なので通常は出ない。",
+        "updated_at": "2026-08-16T01:41:00.000Z"
+      },
+      {
+        "id": "RWD-0010",
+        "name": "デモ3 Stone Budget補正確認報酬",
+        "status": "active",
+        "enabled": true,
+        "tags": [
+          "TAG-0001",
+          "TAG-0005"
+        ],
+        "params": {
+          "mode": "independent",
+          "entries": [
+            {
+              "kind": "gold",
+              "amount": 10,
+              "rate": 1,
+              "scaling_mode": "amount"
+            },
+            {
+              "kind": "material",
+              "resource_id": "MAT-DEMO3-CHECKPOINT",
+              "amount": 1,
+              "rate": 1,
+              "scaling_mode": "none"
+            }
+          ]
+        },
+        "description": "本体Quest終盤のSpecial Event。石板1個でBudget delta20→現設定のEvent報酬補正×1.40となりGold14を期待。",
+        "updated_at": "2026-08-16T01:41:00.000Z"
+      },
+      {
+        "id": "RWD-0011",
+        "name": "デモ4 指定敵Drop",
+        "status": "active",
+        "tags": [
+          "TAG-0004",
+          "TAG-0001"
+        ],
+        "params": {
+          "mode": "independent",
+          "entries": [
+            {
+              "kind": "gold",
+              "amount": 30,
+              "rate": 1,
+              "scaling_mode": "none"
+            },
+            {
+              "kind": "material",
+              "resource_id": "MAT-DEMO4-REQUIRED",
+              "amount": 3,
+              "rate": 1,
+              "scaling_mode": "none"
+            }
+          ]
+        },
+        "description": "",
+        "updated_at": "2026-08-16T02:59:01.259Z"
+      }
+    ],
+    "adventure_settings": [
+      {
+        "id": "ADV-0001",
+        "name": "冒険バランス既定",
+        "status": "active",
+        "enabled": true,
+        "tags": [],
+        "params": {
+          "encounter": {
+            "default_spawn_weight": 1,
+            "max_units": 100
+          },
+          "reward_scaling": {
+            "bonus_per_budget": 0.02,
+            "min_multiplier": 1,
+            "max_multiplier": null,
+            "amount_rounding": "floor",
+            "rarity_weight_bonus_per_budget": {
+              "common": 0,
+              "uncommon": 0.002,
+              "rare": 0.005,
+              "epic": 0.01,
+              "legendary": 0.02
+            }
+          },
+          "exploration": {
+            "default_base_weight": 1,
+            "default_success_rate": 1,
+            "min_success_rate": 0,
+            "max_success_rate": 1,
+            "rarity_budget_reference": 0,
+            "rarity_weight_bonus_per_budget": {
+              "common": 0,
+              "uncommon": 0.002,
+              "rare": 0.005,
+              "epic": 0.01,
+              "legendary": 0.02
+            }
+          },
+          "fixed_formation_scaling": {
+            "hp_per_ratio": 1,
+            "attack_per_ratio": 1,
+            "agi_per_ratio": 0,
+            "min_multiplier": 1,
+            "max_multiplier": null
+          },
+          "game_runtime": {
+            "character": {
+              "initial_level": 1,
+              "max_level": 50,
+              "initial_hp": 100,
+              "initial_mp": 30,
+              "initial_stats": {
+                "STR": 10,
+                "VIT": 10,
+                "AGI": 10,
+                "DEX": 10,
+                "INT": 10,
+                "MND": 10,
+                "LUK": 10
+              },
+              "party_max_size": 6,
+              "starter_skill_ids": [],
+              "starter_equipped_skill_id": ""
+            },
+            "growth": {
+              "rule_revision": "FORMAL-GROWTH-DATA-2",
+              "outcomes_by_aptitude": {
+                "3": [
+                  {
+                    "amount": 0,
+                    "weight": 70
+                  },
+                  {
+                    "amount": 1,
+                    "weight": 30
+                  }
+                ],
+                "4": [
+                  {
+                    "amount": 0,
+                    "weight": 60
+                  },
+                  {
+                    "amount": 1,
+                    "weight": 40
+                  }
+                ],
+                "7": [
+                  {
+                    "amount": 0,
+                    "weight": 30
+                  },
+                  {
+                    "amount": 1,
+                    "weight": 70
+                  }
+                ],
+                "8": [
+                  {
+                    "amount": 0,
+                    "weight": 20
+                  },
+                  {
+                    "amount": 1,
+                    "weight": 80
+                  }
+                ],
+                "10": [
+                  {
+                    "amount": 1,
+                    "weight": 100
+                  }
+                ],
+                "13": [
+                  {
+                    "amount": 1,
+                    "weight": 70
+                  },
+                  {
+                    "amount": 2,
+                    "weight": 30
+                  }
+                ],
+                "15": [
+                  {
+                    "amount": 1,
+                    "weight": 50
+                  },
+                  {
+                    "amount": 2,
+                    "weight": 50
+                  }
+                ]
+              },
+              "rank_by_aptitude": {
+                "7": "C",
+                "8": "C",
+                "9": "B",
+                "10": "B",
+                "11": "B",
+                "12": "A",
+                "13": "A"
+              }
+            },
+            "new_game": {
+              "starting_gold": 500,
+              "starter_roster": [
+                {
+                  "name": "アルト",
+                  "job_id": "JOB-0001"
+                },
+                {
+                  "name": "セリア",
+                  "job_id": "JOB-0002"
+                },
+                {
+                  "name": "ロウ",
+                  "job_id": "JOB-0003"
+                },
+                {
+                  "name": "フィン",
+                  "job_id": "JOB-0004"
+                },
+                {
+                  "name": "ミナ",
+                  "job_id": "JOB-0005"
+                },
+                {
+                  "name": "エル",
+                  "job_id": "JOB-0006"
+                }
+              ],
+              "party_member_indexes": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "starter_inventory_ids": []
+            },
+            "rarities": {
+              "common": {
+                "label": "★",
+                "name": "一般"
+              },
+              "uncommon": {
+                "label": "★★",
+                "name": "上質"
+              },
+              "rare": {
+                "label": "★★★",
+                "name": "希少"
+              },
+              "epic": {
+                "label": "★★★★",
+                "name": "英雄"
+              },
+              "legendary": {
+                "label": "★★★★★",
+                "name": "伝説"
+              }
+            },
+            "battle_flow": {
+              "action_gauge": {
+                "max": 100,
+                "ai_reevaluation_ratio": 0.1,
+                "successful_action_consume_ratio": 1,
+                "failed_execution_consume_ratio": 0.5
+              },
+              "casting": {
+                "default_skill_duration_ticks": 0
+              }
+            },
+            "equipment_rules": {
+              "weapon": {
+                "str_requirement_two_hand_multiplier": 2
+              }
+            }
+          }
+        },
+        "description": "冒険・キャラクター・成長・新規ゲーム・表示レアリティ・戦闘フローの調整値。Game側へ固定せずStudioデータから変更します。Player初期HP/MPはgame_runtime.character.initial_hp / initial_mpを正規ownerとし、旧battle_actor派生式は使用しません。武器2枠・STR両手持ち緩和倍率を調整可能にします。",
+        "updated_at": "2026-09-01T13:02:00+09:00"
+      }
+    ],
+    "ai_searches": [
+      {
+        "schema_version": "2.0.0",
+        "id": "AIS-0001",
+        "name": "探索",
+        "node_type": "search",
+        "status": "active",
+        "data_version": "0.1.0-draft",
+        "description": "",
+        "tags": [],
+        "evaluator": "search.exists",
+        "ports": {
+          "inputs": [
+            {
+              "id": "in",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "入口"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "found",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "発見"
+            },
+            {
+              "id": "not_found",
+              "kind": "flow",
+              "data_type": "flow",
+              "label": "未発見"
+            }
+          ]
+        },
+        "parameter_schema": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        },
+        "unlock": {}
+      }
+    ],
+    "ai_target_selectors": [
+      {
+        "schema_version": "2.0.0",
+        "id": "ATS-0001",
+        "name": "HP割合が最も低い対象",
+        "evaluator": "selector.lowest_hp_ratio",
+        "parameter_schema": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        },
+        "tags": [],
+        "enabled": true,
+        "status": "draft",
+        "description": ""
+      }
+    ]
+  },
+  "sync_meta": {
+    "provider": "github",
+    "repository": "kj2whvbzjn-hue/guild-adventure-studio",
+    "branch": "main",
+    "path": "project-data.json",
+    "pushed_at": "2026-07-26T01:01:29.341Z"
+  },
+  "ai_programs": [
+    {
+      "id": "AIP-0001",
+      "data_version": "0.1.0-draft",
+      "name": "Monster共通AI: HP最少の敵へ通常攻撃",
+      "updated_at": "2026-09-01T08:55:08.072Z",
+      "status": "valid",
+      "entry_node_id": "AIN-0001",
+      "nodes": [
+        {
+          "instance_id": "AIN-0001",
+          "master_node_id": "AIA-0001",
+          "master_data_version": "0.1.0-draft",
+          "node_type": "action",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "parameters": {},
+          "target_selector": {
+            "selector_id": "ATS-0001",
+            "params": {}
+          },
+          "comment": "Human-fixed P9 Developer Program mapping"
+        }
+      ],
+      "edges": [],
+      "subroutines": [],
+      "tags": [],
+      "description": "Human-fixed P9 Developer Program: HP最少の敵 → 通常攻撃.",
+      "schema_version": "2.0.0",
+      "version": 1,
+      "compiled": {
+        "compiler_version": "2.0.0",
+        "content_hash": "794ae7031859051619ead42ac4be9739145fa85a8f1f4c062213878b8083b5d4",
+        "data_version": "0.1.0-draft",
+        "entry_instruction": "I-0001",
+        "instructions": [
+          {
+            "evaluator": "action.attack",
+            "instruction_id": "I-0001",
+            "master_node_id": "AIA-0001",
+            "op": "ACTION",
+            "origin_part_id": "AIN-0001",
+            "params": {},
+            "source_node_id": "AIN-0001",
+            "target_selector": {
+              "params": {},
+              "selector_id": "ATS-0001"
+            }
+          }
+        ],
+        "limits": {
+          "max_steps": 1,
+          "max_subroutine_depth": 0
+        },
+        "program_id": "AIP-0001",
+        "program_version": 1,
+        "schema_version": "2.0.0",
+        "source_map": {
+          "I-0001": {
+            "origin_part_id": "AIN-0001",
+            "source_node_id": "AIN-0001"
+          }
+        }
+      }
+    }
+  ],
+  "design_cards": [],
+  "rules": [],
+  "tag_categories": [
+    {
+      "id": "TGC-0001",
+      "name": "能力変化"
+    },
+    {
+      "id": "TGC-0002",
+      "name": "継続ダメ"
+    },
+    {
+      "id": "TGC-0003",
+      "name": "状態異常"
+    },
+    {
+      "id": "TGC-0004",
+      "name": "防御効果"
+    },
+    {
+      "id": "TGC-0005",
+      "name": "対象"
+    },
+    {
+      "id": "TGC-0006",
+      "name": "状態管理"
+    }
+  ],
+  "tags": [
+    {
+      "id": "TAG-0001",
+      "name": "TAG-0001"
+    },
+    {
+      "id": "TAG-0002",
+      "name": "TAG-0002"
+    },
+    {
+      "id": "TAG-0003",
+      "name": "TAG-0003"
+    },
+    {
+      "id": "TAG-0004",
+      "name": "TAG-0004"
+    },
+    {
+      "id": "TAG-0005",
+      "name": "TAG-0005"
+    },
+    {
+      "id": "TAG-0006",
+      "name": "攻撃アップ",
+      "category_id": "TGC-0001"
+    },
+    {
+      "id": "TAG-0007",
+      "name": "攻撃ダウン",
+      "category_id": "TGC-0001"
+    },
+    {
+      "id": "TAG-0008",
+      "name": "防御アップ",
+      "category_id": "TGC-0001"
+    },
+    {
+      "id": "TAG-0009",
+      "name": "防御ダウン",
+      "category_id": "TGC-0001"
+    },
+    {
+      "id": "TAG-0010",
+      "name": "命中アップ",
+      "category_id": "TGC-0001"
+    },
+    {
+      "id": "TAG-0011",
+      "name": "命中ダウン",
+      "category_id": "TGC-0001"
+    },
+    {
+      "id": "TAG-0012",
+      "name": "行動速度アップ",
+      "category_id": "TGC-0001"
+    },
+    {
+      "id": "TAG-0013",
+      "name": "会心率アップ",
+      "category_id": "TGC-0001"
+    },
+    {
+      "id": "TAG-0014",
+      "name": "会心威力アップ",
+      "category_id": "TGC-0001"
+    },
+    {
+      "id": "TAG-0015",
+      "name": "火傷",
+      "category_id": "TGC-0002"
+    },
+    {
+      "id": "TAG-0016",
+      "name": "毒",
+      "category_id": "TGC-0002"
+    },
+    {
+      "id": "TAG-0017",
+      "name": "行動不能",
+      "category_id": "TGC-0003"
+    },
+    {
+      "id": "TAG-0018",
+      "name": "シールド",
+      "category_id": "TGC-0004"
+    },
+    {
+      "id": "TAG-0019",
+      "name": "かばう",
+      "category_id": "TGC-0004"
+    },
+    {
+      "id": "TAG-0020",
+      "name": "自分",
+      "category_id": "TGC-0005",
+      "runtime_semantic": "SELF"
+    },
+    {
+      "id": "TAG-0021",
+      "name": "味方",
+      "category_id": "TGC-0005",
+      "runtime_semantic": "ALLY"
+    },
+    {
+      "id": "TAG-0022",
+      "name": "自分以外の味方",
+      "category_id": "TGC-0005",
+      "runtime_semantic": "OTHER_ALLY"
+    },
+    {
+      "id": "TAG-0023",
+      "name": "敵",
+      "category_id": "TGC-0005",
+      "runtime_semantic": "ENEMY"
+    },
+    {
+      "id": "TAG-0024",
+      "name": "生存",
+      "category_id": "TGC-0006",
+      "runtime_semantic": "ALIVE"
+    },
+    {
+      "id": "TAG-0025",
+      "name": "死亡",
+      "category_id": "TGC-0006",
+      "runtime_semantic": "DEAD"
+    },
+    {
+      "id": "TAG-0026",
+      "name": "HP",
+      "category_id": "TGC-0006",
+      "runtime_semantic": "HP"
+    },
+    {
+      "id": "TAG-0027",
+      "name": "MP",
+      "category_id": "TGC-0006",
+      "runtime_semantic": "MP"
+    }
+  ],
+  "battle_verification": {
+    "schema_version": "1.0.0",
+    "test_projects": [],
+    "rosters": [],
+    "roster_templates": [],
+    "opponent_sets": [],
+    "tests": [],
+    "benchmarks": [],
+    "results": [],
+    "change_events": []
+  },
+  "ai_templates": [],
+  "ai_runtimes": [],
+  "balance": {},
+  "game_settings": {},
+  "battle_formula_profiles": [],
+  "ai_program_layouts": [
+    {
+      "schema_version": "2.0.0",
+      "data_version": "0.1.0-draft",
+      "layout_id": "AIL-0001",
+      "program_id": "AIP-0001",
+      "width": 8,
+      "height": 8,
+      "chips": [
+        {
+          "instance_id": "AIN-0001",
+          "x": 0,
+          "y": 0,
+          "rotation": 0
+        }
+      ],
+      "extensions": []
+    }
+  ],
+  "ai_program_runtime": [
+    {
+      "compiler_version": "2.0.0",
+      "content_hash": "794ae7031859051619ead42ac4be9739145fa85a8f1f4c062213878b8083b5d4",
+      "data_version": "0.1.0-draft",
+      "entry_instruction": "I-0001",
+      "instructions": [
+        {
+          "evaluator": "action.attack",
+          "instruction_id": "I-0001",
+          "master_node_id": "AIA-0001",
+          "op": "ACTION",
+          "origin_part_id": "AIN-0001",
+          "params": {},
+          "source_node_id": "AIN-0001",
+          "target_selector": {
+            "params": {},
+            "selector_id": "ATS-0001"
+          }
+        }
+      ],
+      "limits": {
+        "max_steps": 1,
+        "max_subroutine_depth": 0
+      },
+      "program_id": "AIP-0001",
+      "program_version": 1,
+      "schema_version": "2.0.0",
+      "source_map": {
+        "I-0001": {
+          "origin_part_id": "AIN-0001",
+          "source_node_id": "AIN-0001"
+        }
+      }
+    }
+  ],
+  "discussions": []
+}
