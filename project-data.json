@@ -6,7 +6,7 @@
     "product_version": "4.0.0",
     "status": "development",
     "description": "AIと人間が共同でゲーム開発する統合開発環境",
-    "updated_at": "2026-09-08T14:30:03.431Z"
+    "updated_at": "2026-09-09T14:58:24.308Z"
   },
   "decisions": [
     {
@@ -188,6 +188,18 @@
     {
       "at": "2026-09-08T14:30:03.431Z",
       "message": "Data Exchange Transaction: equipment add=308 import=0 keep=0"
+    },
+    {
+      "at": "2026-09-09T03:34:11.288Z",
+      "message": "Data Exchange Transaction: monsters add=0 import=1 keep=0"
+    },
+    {
+      "at": "2026-09-09T23:10:51+09:00",
+      "message": "New Game初期装備をADV-0001 game_runtime.new_game.starter_roster[*].starter_equipmentへData Firstで設定。アルト=木の大剣+木の重装4部位、セリア=木の片手剣+木の盾+木の重装4部位、ロウ=木の短剣+布の軽装4部位、フィン=木の弓+木の矢筒+布の軽装4部位、ミナ=木の杖+布のローブ4部位、エル=木のワンド+布のローブ4部位。starter_inventory_idsは変更しない。"
+    },
+    {
+      "at": "2026-09-09T14:58:24.308Z",
+      "message": "full json imported through preflight gate"
     }
   ],
   "quests": [
@@ -16065,7 +16077,12 @@
           "luk": 0.3
         },
         "description": "実機検証用。Enemy Budget 1。撃破報酬はGold 10＋戦闘トークン1。",
-        "updated_at": "2026-09-08T12:19:48.932Z"
+        "updated_at": "2026-09-08T12:19:48.932Z",
+        "default_formation_position": "FRONTLINE",
+        "formalAiBinding": {
+          "program_id": "AIP-0001",
+          "layout_id": "AIL-0001"
+        }
       },
       {
         "id": "MON-0002",
@@ -17166,27 +17183,71 @@
               "starter_roster": [
                 {
                   "name": "アルト",
-                  "job_id": "JOB-0001"
+                  "job_id": "JOB-0001",
+                  "starter_equipment": {
+                    "weapon1": "EQP-0012",
+                    "head": "EQP-0155",
+                    "armor": "EQP-0144",
+                    "gloves": "EQP-0166",
+                    "feet": "EQP-0177"
+                  }
                 },
                 {
                   "name": "セリア",
-                  "job_id": "JOB-0002"
+                  "job_id": "JOB-0002",
+                  "starter_equipment": {
+                    "weapon1": "EQP-0001",
+                    "weapon2": "EQP-0122",
+                    "head": "EQP-0155",
+                    "armor": "EQP-0144",
+                    "gloves": "EQP-0166",
+                    "feet": "EQP-0177"
+                  }
                 },
                 {
                   "name": "ロウ",
-                  "job_id": "JOB-0003"
+                  "job_id": "JOB-0003",
+                  "starter_equipment": {
+                    "weapon1": "EQP-0023",
+                    "head": "EQP-0199",
+                    "armor": "EQP-0188",
+                    "gloves": "EQP-0210",
+                    "feet": "EQP-0221"
+                  }
                 },
                 {
                   "name": "フィン",
-                  "job_id": "JOB-0004"
+                  "job_id": "JOB-0004",
+                  "starter_equipment": {
+                    "weapon1": "EQP-0067",
+                    "weapon2": "EQP-0133",
+                    "head": "EQP-0199",
+                    "armor": "EQP-0188",
+                    "gloves": "EQP-0210",
+                    "feet": "EQP-0221"
+                  }
                 },
                 {
                   "name": "ミナ",
-                  "job_id": "JOB-0005"
+                  "job_id": "JOB-0005",
+                  "starter_equipment": {
+                    "weapon1": "EQP-0089",
+                    "head": "EQP-0243",
+                    "armor": "EQP-0232",
+                    "gloves": "EQP-0254",
+                    "feet": "EQP-0265"
+                  }
                 },
                 {
                   "name": "エル",
-                  "job_id": "JOB-0006"
+                  "job_id": "JOB-0006",
+                  "starter_equipment": {
+                    "weapon1": "EQP-0100",
+                    "head": "EQP-0243",
+                    "armor": "EQP-0232",
+                    "gloves": "EQP-0254",
+                    "feet": "EQP-0265"
+                  }
                 }
               ],
               "party_member_indexes": [
@@ -17240,7 +17301,7 @@
           }
         },
         "description": "冒険・キャラクター・成長・新規ゲーム・表示レアリティ・戦闘フローの調整値。Game側へ固定せずStudioデータから変更します。Player初期HP/MPはgame_runtime.character.initial_hp / initial_mpを正規ownerとし、旧battle_actor派生式は使用しません。武器2枠・STR両手持ち緩和倍率を調整可能にします。",
-        "updated_at": "2026-09-01T13:02:00+09:00"
+        "updated_at": "2026-09-09T23:10:51+09:00"
       }
     ],
     "ai_searches": [
