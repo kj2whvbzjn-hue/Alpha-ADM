@@ -6,7 +6,7 @@
     "product_version": "4.0.0",
     "status": "development",
     "description": "AIと人間が共同でゲーム開発する統合開発環境",
-    "updated_at": "2026-09-10T04:02:15.863Z"
+    "updated_at": "2026-09-10T06:03:10.523Z"
   },
   "decisions": [
     {
@@ -210,7 +210,11 @@
       "message": "Human確定ルールをBalance Dataへ反映。Skill/Passive習得は共通Skill Point、Level Up時の付与量=1、Skill/Passive既定習得Cost=各1 Skill Point、Respec GoldはSkill個別=50 / Passive個別=50 / 全解除=200を初期Balance値としてADV-0001 game_runtime.skill_progressionへ追加。数値はBalance可変でありSystem固定値ではない。"
     },
     {
-      "at": "2026-09-10T04:02:15.863Z",
+      "at": "2026-09-10T14:53:58+09:00",
+      "message": "ハードコード可変化 Block 2（Game Data Owner）。Player初期Skill Point、初期Passive、初期FormationのCurrent挙動をADV-0001 game_runtime.characterへData Firstで移管。initial_skill_points=0 / starter_passive_ids=[] / initial_formation_position=FRONTLINE。値はGame Data可変でありSource固定値ではない。"
+    },
+    {
+      "at": "2026-09-10T06:03:10.523Z",
       "message": "full json imported through preflight gate"
     }
   ],
@@ -17112,7 +17116,10 @@
               },
               "party_max_size": 6,
               "starter_skill_ids": [],
-              "starter_equipped_skill_id": ""
+              "starter_equipped_skill_id": "",
+              "initial_skill_points": 0,
+              "starter_passive_ids": [],
+              "initial_formation_position": "FRONTLINE"
             },
             "growth": {
               "rule_revision": "FORMAL-GROWTH-DATA-2",
@@ -17330,8 +17337,8 @@
             }
           }
         },
-        "description": "冒険・キャラクター・成長・新規ゲーム・表示レアリティ・戦闘フローの調整値。Game側へ固定せずStudioデータから変更します。Player初期HP/MPはgame_runtime.character.initial_hp / initial_mpを正規ownerとし、旧battle_actor派生式は使用しません。武器2枠・STR両手持ち緩和倍率を調整可能にします。 Skill/Passive習得は共通Skill Pointを使用し、Level Up時Skill Point付与量・習得必要量・Respec Gold額はgame_runtime.skill_progressionをBalance正本とします。",
-        "updated_at": "2026-09-10T10:35:28+09:00"
+        "description": "冒険・キャラクター・成長・新規ゲーム・表示レアリティ・戦闘フローの調整値。Game側へ固定せずStudioデータから変更します。Player初期HP/MPはgame_runtime.character.initial_hp / initial_mpを正規ownerとし、旧battle_actor派生式は使用しません。武器2枠・STR両手持ち緩和倍率を調整可能にします。 Skill/Passive習得は共通Skill Pointを使用し、Level Up時Skill Point付与量・習得必要量・Respec Gold額はgame_runtime.skill_progressionをBalance正本とします。 Player初期Skill Point・初期Passive・初期Formationはgame_runtime.characterのData Ownerから取得します。",
+        "updated_at": "2026-09-10T14:53:58+09:00"
       }
     ],
     "ai_searches": [
