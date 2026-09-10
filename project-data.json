@@ -6,7 +6,7 @@
     "product_version": "4.0.0",
     "status": "development",
     "description": "AIと人間が共同でゲーム開発する統合開発環境",
-    "updated_at": "2026-09-10T07:53:15.189Z"
+    "updated_at": "2026-09-10T08:20:15.536Z"
   },
   "decisions": [
     {
@@ -220,7 +220,11 @@
       "detail": "Human確定のFormal target Active Skill最大5 + Passive最大5を、Source固定値ではなくADV-0001.params.game_runtime.skill_loadout.active_skill_slots/passive_slotsへBalance値として追加。Source接続はGame Data配置後のFresh Currentをbaselineに別工程で実施する。"
     },
     {
-      "at": "2026-09-10T07:53:15.189Z",
+      "at": "2026-09-10T17:12:00+09:00",
+      "message": "Human-requested pre-R31-008 GAME_DATA skill catalog registration: Current Formal Skill Generator/Registry contractsに従いActive Skill SKL-0001〜SKL-0010を10件登録。既存PAS-0001 二刀流を保持し、現行Passive Runtime契約でPAS-0002〜PAS-0010を9件追加してPassive合計10件とした。物理/魔法/DOT/回復/Barrier/解除/COVER/Buff/Status/Revive、および周期回復/低HP/致死耐え/反撃/Reactive Actionを優先。Source変更なし。"
+    },
+    {
+      "at": "2026-09-10T08:20:15.536Z",
       "message": "full json imported through preflight gate"
     }
   ],
@@ -1066,7 +1070,822 @@
         "description": "職業適性値。Game RuntimeはこのStudio Masterを参照し、コード内固定値を使用しません。"
       }
     ],
-    "skills": [],
+    "skills": [
+      {
+        "schemaVersion": 1,
+        "id": "SKL-0001",
+        "name": "剛撃",
+        "skillLevel": 2,
+        "abilityConditions": [
+          {
+            "stat": "STR",
+            "min": 20
+          }
+        ],
+        "trigger": {
+          "type": "ON_USE",
+          "scope": "SELF"
+        },
+        "conditions": [],
+        "target": {
+          "side": "ENEMY",
+          "range": "SINGLE"
+        },
+        "effects": [
+          {
+            "type": "DAMAGE",
+            "power": 120,
+            "damageType": "PHYSICAL"
+          }
+        ],
+        "resource": {
+          "mpCost": 16,
+          "cooldown": 0,
+          "activationPriority": 0,
+          "castTime": 0
+        },
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "triggerContract": {
+            "type": "ON_USE",
+            "scope": "SELF",
+            "engineEvent": "use",
+            "dispatchMode": "RESOLVE_ONLY",
+            "priority": 0
+          },
+          "targetContract": {
+            "side": "ENEMY",
+            "range": "SINGLE",
+            "randomCount": null,
+            "excludeSelf": false
+          },
+          "conditionContracts": [],
+          "effectContracts": [
+            {
+              "type": "DAMAGE",
+              "power": 120,
+              "damageType": "PHYSICAL"
+            }
+          ],
+          "applyContracts": [],
+          "auraEffectContract": null,
+          "resourceContract": {
+            "mpCost": 16,
+            "cooldown": 0,
+            "activationPriority": 0,
+            "castTime": 0
+          }
+        },
+        "status": "draft",
+        "description": ""
+      },
+      {
+        "schemaVersion": 1,
+        "id": "SKL-0002",
+        "name": "火炎弾",
+        "skillLevel": 3,
+        "abilityConditions": [
+          {
+            "stat": "INT",
+            "min": 30
+          }
+        ],
+        "trigger": {
+          "type": "ON_USE",
+          "scope": "SELF"
+        },
+        "conditions": [],
+        "target": {
+          "side": "ENEMY",
+          "range": "SINGLE"
+        },
+        "effects": [
+          {
+            "type": "DAMAGE",
+            "power": 20,
+            "damageType": "MAGICAL",
+            "elements": [
+              {
+                "element": "FIRE",
+                "sharePercent": 100
+              }
+            ]
+          }
+        ],
+        "resource": {
+          "mpCost": 24,
+          "cooldown": 0,
+          "activationPriority": 0,
+          "castTime": 0
+        },
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "triggerContract": {
+            "type": "ON_USE",
+            "scope": "SELF",
+            "engineEvent": "use",
+            "dispatchMode": "RESOLVE_ONLY",
+            "priority": 0
+          },
+          "targetContract": {
+            "side": "ENEMY",
+            "range": "SINGLE",
+            "randomCount": null,
+            "excludeSelf": false
+          },
+          "conditionContracts": [],
+          "effectContracts": [
+            {
+              "type": "DAMAGE",
+              "power": 20,
+              "damageType": "MAGICAL",
+              "elementComponents": [
+                {
+                  "element": "FIRE",
+                  "share": 1
+                }
+              ]
+            }
+          ],
+          "applyContracts": [],
+          "auraEffectContract": null,
+          "resourceContract": {
+            "mpCost": 24,
+            "cooldown": 0,
+            "activationPriority": 0,
+            "castTime": 0
+          }
+        },
+        "status": "draft",
+        "description": ""
+      },
+      {
+        "schemaVersion": 1,
+        "id": "SKL-0003",
+        "name": "猛毒付与",
+        "skillLevel": 3,
+        "abilityConditions": [
+          {
+            "stat": "DEX",
+            "min": 30
+          }
+        ],
+        "trigger": {
+          "type": "ON_USE",
+          "scope": "SELF"
+        },
+        "conditions": [],
+        "target": {
+          "side": "ENEMY",
+          "range": "SINGLE"
+        },
+        "effects": [
+          {
+            "type": "APPLY",
+            "effectId": "POISON",
+            "power": 10,
+            "duration": 2,
+            "interval": 1,
+            "stackGain": 1
+          }
+        ],
+        "resource": {
+          "mpCost": 24,
+          "cooldown": 0,
+          "activationPriority": 0,
+          "castTime": 0
+        },
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "triggerContract": {
+            "type": "ON_USE",
+            "scope": "SELF",
+            "engineEvent": "use",
+            "dispatchMode": "RESOLVE_ONLY",
+            "priority": 0
+          },
+          "targetContract": {
+            "side": "ENEMY",
+            "range": "SINGLE",
+            "randomCount": null,
+            "excludeSelf": false
+          },
+          "conditionContracts": [],
+          "effectContracts": [],
+          "applyContracts": [
+            {
+              "effectId": "POISON",
+              "kind": "DOT",
+              "logic": "DOT",
+              "origin_effect_index": 0,
+              "effect_tag_ids": [],
+              "values": {
+                "power": 10,
+                "duration": 2,
+                "interval": 1,
+                "stackGain": 1,
+                "statusId": "POISON",
+                "modifierStat": null,
+                "statusPayload": {}
+              },
+              "lifecycle": {
+                "stackRule": "STACK",
+                "refreshRule": "KEEP",
+                "snapshotPolicy": "SNAPSHOT",
+                "dispelCategory": "DOT",
+                "removeOnDeath": true,
+                "removeOnBattleEnd": true,
+                "removable": false,
+                "maxStacks": 5,
+                "effectiveRule": "SUM",
+                "consumeRule": "NONE",
+                "identityPolicy": "EFFECT_SOURCE_STACK"
+              }
+            }
+          ],
+          "auraEffectContract": null,
+          "resourceContract": {
+            "mpCost": 24,
+            "cooldown": 0,
+            "activationPriority": 0,
+            "castTime": 0
+          }
+        },
+        "status": "draft",
+        "description": ""
+      },
+      {
+        "schemaVersion": 1,
+        "id": "SKL-0004",
+        "name": "治癒術",
+        "skillLevel": 3,
+        "abilityConditions": [
+          {
+            "stat": "MND",
+            "min": 30
+          }
+        ],
+        "trigger": {
+          "type": "ON_USE",
+          "scope": "SELF"
+        },
+        "conditions": [],
+        "target": {
+          "side": "ALLY",
+          "range": "SINGLE"
+        },
+        "effects": [
+          {
+            "type": "HEAL",
+            "power": 30
+          }
+        ],
+        "resource": {
+          "mpCost": 24,
+          "cooldown": 0,
+          "activationPriority": 0,
+          "castTime": 0
+        },
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "triggerContract": {
+            "type": "ON_USE",
+            "scope": "SELF",
+            "engineEvent": "use",
+            "dispatchMode": "RESOLVE_ONLY",
+            "priority": 0
+          },
+          "targetContract": {
+            "side": "ALLY",
+            "range": "SINGLE",
+            "randomCount": null,
+            "excludeSelf": false
+          },
+          "conditionContracts": [],
+          "effectContracts": [
+            {
+              "type": "HEAL",
+              "power": 30
+            }
+          ],
+          "applyContracts": [],
+          "auraEffectContract": null,
+          "resourceContract": {
+            "mpCost": 24,
+            "cooldown": 0,
+            "activationPriority": 0,
+            "castTime": 0
+          }
+        },
+        "status": "draft",
+        "description": ""
+      },
+      {
+        "schemaVersion": 1,
+        "id": "SKL-0005",
+        "name": "守護障壁",
+        "skillLevel": 4,
+        "abilityConditions": [
+          {
+            "stat": "MND",
+            "min": 20
+          },
+          {
+            "stat": "VIT",
+            "min": 20
+          }
+        ],
+        "trigger": {
+          "type": "ON_USE",
+          "scope": "SELF"
+        },
+        "conditions": [],
+        "target": {
+          "side": "ALLY",
+          "range": "SINGLE"
+        },
+        "effects": [
+          {
+            "type": "APPLY",
+            "effectId": "BARRIER",
+            "power": 30,
+            "duration": 2
+          }
+        ],
+        "resource": {
+          "mpCost": 32,
+          "cooldown": 0,
+          "activationPriority": 0,
+          "castTime": 0
+        },
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "triggerContract": {
+            "type": "ON_USE",
+            "scope": "SELF",
+            "engineEvent": "use",
+            "dispatchMode": "RESOLVE_ONLY",
+            "priority": 0
+          },
+          "targetContract": {
+            "side": "ALLY",
+            "range": "SINGLE",
+            "randomCount": null,
+            "excludeSelf": false
+          },
+          "conditionContracts": [],
+          "effectContracts": [],
+          "applyContracts": [
+            {
+              "effectId": "BARRIER",
+              "kind": "SHIELD",
+              "logic": "SHIELD",
+              "origin_effect_index": 0,
+              "effect_tag_ids": [],
+              "values": {
+                "power": 30,
+                "duration": 2,
+                "interval": null,
+                "stackGain": null,
+                "statusId": "BARRIER",
+                "modifierStat": null,
+                "statusPayload": {}
+              },
+              "lifecycle": {
+                "stackRule": "STACK",
+                "refreshRule": "KEEP",
+                "snapshotPolicy": "SNAPSHOT",
+                "dispelCategory": "SHIELD",
+                "removeOnDeath": true,
+                "removeOnBattleEnd": true,
+                "removable": false,
+                "effectiveRule": "SUM",
+                "consumeRule": "FIFO"
+              }
+            }
+          ],
+          "auraEffectContract": null,
+          "resourceContract": {
+            "mpCost": 32,
+            "cooldown": 0,
+            "activationPriority": 0,
+            "castTime": 0
+          }
+        },
+        "status": "draft",
+        "description": ""
+      },
+      {
+        "schemaVersion": 1,
+        "id": "SKL-0006",
+        "name": "浄化",
+        "skillLevel": 3,
+        "abilityConditions": [
+          {
+            "stat": "MND",
+            "min": 30
+          }
+        ],
+        "trigger": {
+          "type": "ON_USE",
+          "scope": "SELF"
+        },
+        "conditions": [],
+        "target": {
+          "side": "ALLY",
+          "range": "SINGLE"
+        },
+        "effects": [
+          {
+            "type": "REMOVE",
+            "category": "STATUS",
+            "all": true
+          }
+        ],
+        "resource": {
+          "mpCost": 24,
+          "cooldown": 0,
+          "activationPriority": 0,
+          "castTime": 0
+        },
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "triggerContract": {
+            "type": "ON_USE",
+            "scope": "SELF",
+            "engineEvent": "use",
+            "dispatchMode": "RESOLVE_ONLY",
+            "priority": 0
+          },
+          "targetContract": {
+            "side": "ALLY",
+            "range": "SINGLE",
+            "randomCount": null,
+            "excludeSelf": false
+          },
+          "conditionContracts": [],
+          "effectContracts": [
+            {
+              "type": "REMOVE",
+              "category": "STATUS",
+              "count": null,
+              "all": true,
+              "order": "oldest"
+            }
+          ],
+          "applyContracts": [],
+          "auraEffectContract": null,
+          "resourceContract": {
+            "mpCost": 24,
+            "cooldown": 0,
+            "activationPriority": 0,
+            "castTime": 0
+          }
+        },
+        "status": "draft",
+        "description": ""
+      },
+      {
+        "schemaVersion": 1,
+        "id": "SKL-0007",
+        "name": "かばう",
+        "skillLevel": 3,
+        "abilityConditions": [
+          {
+            "stat": "VIT",
+            "min": 30
+          }
+        ],
+        "trigger": {
+          "type": "ON_USE",
+          "scope": "SELF"
+        },
+        "conditions": [],
+        "target": {
+          "side": "ALLY",
+          "range": "SINGLE"
+        },
+        "effects": [
+          {
+            "type": "TARGET_CONTROL",
+            "mode": "COVER",
+            "trigger": "DIRECT_ATTACK",
+            "priority": 0,
+            "removable": true,
+            "lifetime": "USES",
+            "uses": 2
+          }
+        ],
+        "resource": {
+          "mpCost": 24,
+          "cooldown": 0,
+          "activationPriority": 0,
+          "castTime": 0
+        },
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "triggerContract": {
+            "type": "ON_USE",
+            "scope": "SELF",
+            "engineEvent": "use",
+            "dispatchMode": "RESOLVE_ONLY",
+            "priority": 0
+          },
+          "targetContract": {
+            "side": "ALLY",
+            "range": "SINGLE",
+            "randomCount": null,
+            "excludeSelf": false
+          },
+          "conditionContracts": [],
+          "effectContracts": [
+            {
+              "type": "TARGET_CONTROL",
+              "mode": "COVER",
+              "trigger": "DIRECT_ATTACK",
+              "priority": 0,
+              "removable": true,
+              "lifetime": "USES",
+              "uses": 2,
+              "duration": null,
+              "origin_effect_index": 0,
+              "effect_tag_ids": []
+            }
+          ],
+          "applyContracts": [],
+          "auraEffectContract": null,
+          "resourceContract": {
+            "mpCost": 24,
+            "cooldown": 0,
+            "activationPriority": 0,
+            "castTime": 0
+          }
+        },
+        "status": "draft",
+        "description": ""
+      },
+      {
+        "schemaVersion": 1,
+        "id": "SKL-0008",
+        "name": "戦意高揚",
+        "skillLevel": 3,
+        "abilityConditions": [
+          {
+            "stat": "STR",
+            "min": 30
+          }
+        ],
+        "trigger": {
+          "type": "ON_USE",
+          "scope": "SELF"
+        },
+        "conditions": [],
+        "target": {
+          "side": "ALLY",
+          "range": "ALL"
+        },
+        "effects": [
+          {
+            "type": "APPLY",
+            "effectId": "ATK_UP",
+            "power": 9,
+            "duration": 20
+          }
+        ],
+        "resource": {
+          "mpCost": 72,
+          "cooldown": 14,
+          "activationPriority": 0,
+          "castTime": 7
+        },
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "triggerContract": {
+            "type": "ON_USE",
+            "scope": "SELF",
+            "engineEvent": "use",
+            "dispatchMode": "RESOLVE_ONLY",
+            "priority": 0
+          },
+          "targetContract": {
+            "side": "ALLY",
+            "range": "ALL",
+            "randomCount": null,
+            "excludeSelf": false
+          },
+          "conditionContracts": [],
+          "effectContracts": [],
+          "applyContracts": [
+            {
+              "effectId": "ATK_UP",
+              "kind": "BUFF",
+              "logic": "BUFF",
+              "origin_effect_index": 0,
+              "effect_tag_ids": [],
+              "values": {
+                "power": 9,
+                "duration": 20,
+                "interval": null,
+                "stackGain": 1,
+                "statusId": "ATK_UP",
+                "modifierStat": "ATK",
+                "statusPayload": {}
+              },
+              "lifecycle": {
+                "stackRule": "STACK",
+                "refreshRule": "KEEP",
+                "snapshotPolicy": "SNAPSHOT",
+                "dispelCategory": "BUFF",
+                "removeOnDeath": true,
+                "removeOnBattleEnd": true,
+                "removable": false,
+                "effectiveRule": "HIGHEST",
+                "consumeRule": "NONE"
+              }
+            }
+          ],
+          "auraEffectContract": null,
+          "resourceContract": {
+            "mpCost": 72,
+            "cooldown": 14,
+            "activationPriority": 0,
+            "castTime": 7
+          }
+        },
+        "status": "draft",
+        "description": ""
+      },
+      {
+        "schemaVersion": 1,
+        "id": "SKL-0009",
+        "name": "スタン",
+        "skillLevel": 2,
+        "abilityConditions": [
+          {
+            "stat": "DEX",
+            "min": 20
+          }
+        ],
+        "trigger": {
+          "type": "ON_USE",
+          "scope": "SELF"
+        },
+        "conditions": [],
+        "target": {
+          "side": "ENEMY",
+          "range": "SINGLE"
+        },
+        "effects": [
+          {
+            "type": "APPLY",
+            "effectId": "STUN",
+            "duration": 2
+          }
+        ],
+        "resource": {
+          "mpCost": 16,
+          "cooldown": 0,
+          "activationPriority": 0,
+          "castTime": 0
+        },
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "triggerContract": {
+            "type": "ON_USE",
+            "scope": "SELF",
+            "engineEvent": "use",
+            "dispatchMode": "RESOLVE_ONLY",
+            "priority": 0
+          },
+          "targetContract": {
+            "side": "ENEMY",
+            "range": "SINGLE",
+            "randomCount": null,
+            "excludeSelf": false
+          },
+          "conditionContracts": [],
+          "effectContracts": [],
+          "applyContracts": [
+            {
+              "effectId": "STUN",
+              "kind": "STATUS",
+              "logic": "STATUS",
+              "origin_effect_index": 0,
+              "effect_tag_ids": [],
+              "values": {
+                "power": null,
+                "duration": 2,
+                "interval": null,
+                "stackGain": null,
+                "statusId": "STATUS-STUN",
+                "modifierStat": null,
+                "statusPayload": {
+                  "actionDisabled": true
+                }
+              },
+              "lifecycle": {
+                "stackRule": "UNIQUE",
+                "refreshRule": "REFRESH",
+                "snapshotPolicy": "SNAPSHOT",
+                "dispelCategory": "STATUS",
+                "removeOnDeath": true,
+                "removeOnBattleEnd": true,
+                "removable": true,
+                "effectiveRule": "LATEST",
+                "consumeRule": "NONE",
+                "resistancePolicy": "DURATION_REDUCTION"
+              }
+            }
+          ],
+          "auraEffectContract": null,
+          "resourceContract": {
+            "mpCost": 16,
+            "cooldown": 0,
+            "activationPriority": 0,
+            "castTime": 0
+          }
+        },
+        "status": "draft",
+        "description": ""
+      },
+      {
+        "schemaVersion": 1,
+        "id": "SKL-0010",
+        "name": "蘇生術",
+        "skillLevel": 6,
+        "abilityConditions": [
+          {
+            "stat": "MND",
+            "min": 60
+          }
+        ],
+        "trigger": {
+          "type": "ON_USE",
+          "scope": "SELF"
+        },
+        "conditions": [],
+        "target": {
+          "side": "CORPSE",
+          "range": "SINGLE"
+        },
+        "effects": [
+          {
+            "type": "REVIVE",
+            "hpRate": 0.1
+          }
+        ],
+        "resource": {
+          "mpCost": 48,
+          "cooldown": 0,
+          "activationPriority": 0,
+          "castTime": 0
+        },
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "triggerContract": {
+            "type": "ON_USE",
+            "scope": "SELF",
+            "engineEvent": "use",
+            "dispatchMode": "RESOLVE_ONLY",
+            "priority": 0
+          },
+          "targetContract": {
+            "side": "CORPSE",
+            "range": "SINGLE",
+            "randomCount": null,
+            "excludeSelf": false
+          },
+          "conditionContracts": [],
+          "effectContracts": [
+            {
+              "type": "REVIVE",
+              "hp": null,
+              "hpRate": 0.1
+            }
+          ],
+          "applyContracts": [],
+          "auraEffectContract": null,
+          "resourceContract": {
+            "mpCost": 48,
+            "cooldown": 0,
+            "activationPriority": 0,
+            "castTime": 0
+          }
+        },
+        "status": "draft",
+        "description": ""
+      }
+    ],
     "equipment": [
       {
         "id": "EQP-0001",
@@ -16638,6 +17457,789 @@
             "combatCapabilities": [
               "DUAL_WIELD"
             ]
+          }
+        }
+      },
+      {
+        "id": "PAS-0002",
+        "name": "自然治癒",
+        "status": "active",
+        "tags": [],
+        "passiveSeriesId": "PAS-0002",
+        "params": {
+          "ability_conditions": [
+            {
+              "stat": "VIT",
+              "min": 20
+            }
+          ],
+          "mod_ids": [],
+          "effect_ids": [],
+          "combat_capabilities": [],
+          "periodic": {
+            "resource": "HP",
+            "intervalTicks": 20,
+            "initialDelayTicks": 20,
+            "recoveryRate": 0.01
+          }
+        },
+        "description": "一定間隔で最大HP割合を回復するPassive。",
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "passiveSeriesId": "PAS-0002",
+          "abilityRequirementContracts": [
+            {
+              "stat": "VIT",
+              "min": 20
+            }
+          ],
+          "thresholdConsumption": {
+            "byStat": [
+              {
+                "stat": "VIT",
+                "min": 20
+              }
+            ],
+            "total": 20
+          },
+          "triggerContract": null,
+          "targetContract": null,
+          "executionContract": null,
+          "periodicContract": {
+            "resource": "HP",
+            "intervalTicks": 20,
+            "initialDelayTicks": 20,
+            "recoveryRate": 0.01
+          },
+          "lowHpContract": null,
+          "modifierRefs": {
+            "modIds": [],
+            "effectIds": [],
+            "combatCapabilities": []
+          }
+        }
+      },
+      {
+        "id": "PAS-0003",
+        "name": "魔力循環",
+        "status": "active",
+        "tags": [],
+        "passiveSeriesId": "PAS-0003",
+        "params": {
+          "ability_conditions": [
+            {
+              "stat": "MND",
+              "min": 20
+            }
+          ],
+          "mod_ids": [],
+          "effect_ids": [],
+          "combat_capabilities": [],
+          "periodic": {
+            "resource": "MP",
+            "intervalTicks": 20,
+            "initialDelayTicks": 20,
+            "recoveryRate": 0.01
+          }
+        },
+        "description": "一定間隔で最大MP割合を回復するPassive。",
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "passiveSeriesId": "PAS-0003",
+          "abilityRequirementContracts": [
+            {
+              "stat": "MND",
+              "min": 20
+            }
+          ],
+          "thresholdConsumption": {
+            "byStat": [
+              {
+                "stat": "MND",
+                "min": 20
+              }
+            ],
+            "total": 20
+          },
+          "triggerContract": null,
+          "targetContract": null,
+          "executionContract": null,
+          "periodicContract": {
+            "resource": "MP",
+            "intervalTicks": 20,
+            "initialDelayTicks": 20,
+            "recoveryRate": 0.01
+          },
+          "lowHpContract": null,
+          "modifierRefs": {
+            "modIds": [],
+            "effectIds": [],
+            "combatCapabilities": []
+          }
+        }
+      },
+      {
+        "id": "PAS-0004",
+        "name": "背水の陣",
+        "status": "active",
+        "tags": [],
+        "passiveSeriesId": "PAS-0004",
+        "params": {
+          "ability_conditions": [
+            {
+              "stat": "VIT",
+              "min": 40
+            }
+          ],
+          "mod_ids": [],
+          "effect_ids": [],
+          "combat_capabilities": [],
+          "lowHp": {
+            "hpThresholdRate": 0.25,
+            "durationTicks": 20,
+            "cooldownTicks": 100,
+            "relativeBonus": 0.2
+          }
+        },
+        "description": "HPが一定割合以下のとき、戦闘性能を一時的に強化するPassive。",
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "passiveSeriesId": "PAS-0004",
+          "abilityRequirementContracts": [
+            {
+              "stat": "VIT",
+              "min": 40
+            }
+          ],
+          "thresholdConsumption": {
+            "byStat": [
+              {
+                "stat": "VIT",
+                "min": 40
+              }
+            ],
+            "total": 40
+          },
+          "triggerContract": null,
+          "targetContract": null,
+          "executionContract": null,
+          "periodicContract": null,
+          "lowHpContract": {
+            "hpThresholdRate": 0.25,
+            "durationTicks": 20,
+            "cooldownTicks": 100,
+            "relativeBonus": 0.2,
+            "contributionTargets": [
+              "PHYSICAL_DAMAGE",
+              "MAGIC_DAMAGE",
+              "ACCURACY",
+              "MAGIC_ACCURACY",
+              "EVASION",
+              "BLOCK_RATE",
+              "BLOCK_PERFORMANCE",
+              "CRITICAL_RATE",
+              "CRITICAL_DAMAGE",
+              "ACTION_GAUGE_GAIN"
+            ]
+          },
+          "modifierRefs": {
+            "modIds": [],
+            "effectIds": [],
+            "combatCapabilities": []
+          }
+        }
+      },
+      {
+        "id": "PAS-0005",
+        "name": "不屈",
+        "status": "active",
+        "tags": [],
+        "passiveSeriesId": "PAS-0005",
+        "params": {
+          "ability_conditions": [
+            {
+              "stat": "VIT",
+              "min": 60
+            }
+          ],
+          "mod_ids": [],
+          "effect_ids": [],
+          "combat_capabilities": [],
+          "trigger": {
+            "type": "ON_FATAL_DAMAGE",
+            "scope": "SELF",
+            "dispatchMode": "ACTION",
+            "priority": 0,
+            "activationChance": 1,
+            "cooldownTicks": 300,
+            "surviveHp": 1
+          }
+        },
+        "description": "致死ダメージを受けたとき、一定CooldownごとにHPを残して耐えるPassive。",
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "passiveSeriesId": "PAS-0005",
+          "abilityRequirementContracts": [
+            {
+              "stat": "VIT",
+              "min": 60
+            }
+          ],
+          "thresholdConsumption": {
+            "byStat": [
+              {
+                "stat": "VIT",
+                "min": 60
+              }
+            ],
+            "total": 60
+          },
+          "triggerContract": {
+            "type": "ON_FATAL_DAMAGE",
+            "scope": "SELF",
+            "engineEvent": "fatal_damage",
+            "dispatchMode": "ACTION",
+            "priority": 0,
+            "phase": "INTERRUPT",
+            "thresholdRequirements": [],
+            "activationChance": 1,
+            "cooldownTicks": 300,
+            "surviveHp": 1
+          },
+          "targetContract": null,
+          "executionContract": null,
+          "periodicContract": null,
+          "lowHpContract": null,
+          "modifierRefs": {
+            "modIds": [],
+            "effectIds": [],
+            "combatCapabilities": []
+          }
+        }
+      },
+      {
+        "id": "PAS-0006",
+        "name": "反撃",
+        "status": "active",
+        "tags": [],
+        "passiveSeriesId": "PAS-0006",
+        "params": {
+          "ability_conditions": [
+            {
+              "stat": "STR",
+              "min": 20
+            }
+          ],
+          "mod_ids": [],
+          "effect_ids": [],
+          "combat_capabilities": [],
+          "trigger": {
+            "type": "ON_HIT_RECEIVED",
+            "scope": "SELF",
+            "dispatchMode": "COUNTER",
+            "priority": 0,
+            "activationChance": 1,
+            "cooldownTicks": 0
+          },
+          "target": {
+            "mode": "EVENT_CONTEXT",
+            "eventTarget": "ATTACKER"
+          },
+          "execution": {
+            "referencedSkillId": "SKL-0001"
+          }
+        },
+        "description": "攻撃を受けたとき、攻撃者へ剛撃で反撃するPassive。",
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "passiveSeriesId": "PAS-0006",
+          "abilityRequirementContracts": [
+            {
+              "stat": "STR",
+              "min": 20
+            }
+          ],
+          "thresholdConsumption": {
+            "byStat": [
+              {
+                "stat": "STR",
+                "min": 20
+              }
+            ],
+            "total": 20
+          },
+          "triggerContract": {
+            "type": "ON_HIT_RECEIVED",
+            "scope": "SELF",
+            "engineEvent": "hit_received",
+            "dispatchMode": "COUNTER",
+            "priority": 0,
+            "thresholdRequirements": [],
+            "activationChance": 1,
+            "cooldownTicks": 0
+          },
+          "targetContract": {
+            "mode": "EVENT_CONTEXT",
+            "eventTarget": "ATTACKER"
+          },
+          "executionContract": {
+            "referencedSkillId": "SKL-0001",
+            "effectContracts": [
+              {
+                "type": "DAMAGE",
+                "power": 120,
+                "damageType": "PHYSICAL"
+              }
+            ],
+            "applyContracts": [],
+            "auraEffectContract": null
+          },
+          "periodicContract": null,
+          "lowHpContract": null,
+          "modifierRefs": {
+            "modIds": [],
+            "effectIds": [],
+            "combatCapabilities": []
+          }
+        }
+      },
+      {
+        "id": "PAS-0007",
+        "name": "会心猛毒",
+        "status": "active",
+        "tags": [],
+        "passiveSeriesId": "PAS-0007",
+        "params": {
+          "ability_conditions": [
+            {
+              "stat": "DEX",
+              "min": 30
+            }
+          ],
+          "mod_ids": [],
+          "effect_ids": [],
+          "combat_capabilities": [],
+          "trigger": {
+            "type": "ON_CRITICAL",
+            "scope": "SELF",
+            "dispatchMode": "ACTION",
+            "priority": 0,
+            "activationChance": 1,
+            "cooldownTicks": 0
+          },
+          "target": {
+            "mode": "EVENT_CONTEXT",
+            "eventTarget": "HIT_TARGET"
+          },
+          "execution": {
+            "referencedSkillId": "SKL-0003"
+          }
+        },
+        "description": "会心発生時、命中した対象へ猛毒付与を実行するPassive。",
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "passiveSeriesId": "PAS-0007",
+          "abilityRequirementContracts": [
+            {
+              "stat": "DEX",
+              "min": 30
+            }
+          ],
+          "thresholdConsumption": {
+            "byStat": [
+              {
+                "stat": "DEX",
+                "min": 30
+              }
+            ],
+            "total": 30
+          },
+          "triggerContract": {
+            "type": "ON_CRITICAL",
+            "scope": "SELF",
+            "engineEvent": "critical",
+            "dispatchMode": "ACTION",
+            "priority": 0,
+            "phase": "REACTIVE",
+            "thresholdRequirements": [],
+            "activationChance": 1,
+            "cooldownTicks": 0
+          },
+          "targetContract": {
+            "mode": "EVENT_CONTEXT",
+            "eventTarget": "HIT_TARGET"
+          },
+          "executionContract": {
+            "referencedSkillId": "SKL-0003",
+            "effectContracts": [],
+            "applyContracts": [
+              {
+                "effectId": "POISON",
+                "kind": "DOT",
+                "logic": "DOT",
+                "origin_effect_index": 0,
+                "effect_tag_ids": [],
+                "values": {
+                  "power": 10,
+                  "duration": 2,
+                  "interval": 1,
+                  "stackGain": 1,
+                  "statusId": "POISON",
+                  "modifierStat": null,
+                  "statusPayload": {}
+                },
+                "lifecycle": {
+                  "stackRule": "STACK",
+                  "refreshRule": "KEEP",
+                  "snapshotPolicy": "SNAPSHOT",
+                  "dispelCategory": "DOT",
+                  "removeOnDeath": true,
+                  "removeOnBattleEnd": true,
+                  "removable": false,
+                  "maxStacks": 5,
+                  "effectiveRule": "SUM",
+                  "consumeRule": "NONE",
+                  "identityPolicy": "EFFECT_SOURCE_STACK"
+                }
+              }
+            ],
+            "auraEffectContract": null
+          },
+          "periodicContract": null,
+          "lowHpContract": null,
+          "modifierRefs": {
+            "modIds": [],
+            "effectIds": [],
+            "combatCapabilities": []
+          }
+        }
+      },
+      {
+        "id": "PAS-0008",
+        "name": "回避治癒",
+        "status": "active",
+        "tags": [],
+        "passiveSeriesId": "PAS-0008",
+        "params": {
+          "ability_conditions": [
+            {
+              "stat": "MND",
+              "min": 30
+            }
+          ],
+          "mod_ids": [],
+          "effect_ids": [],
+          "combat_capabilities": [],
+          "trigger": {
+            "type": "ON_EVADE",
+            "scope": "SELF",
+            "dispatchMode": "ACTION",
+            "priority": 0,
+            "activationChance": 1,
+            "cooldownTicks": 0
+          },
+          "target": {
+            "mode": "EVENT_CONTEXT",
+            "eventTarget": "SELF"
+          },
+          "execution": {
+            "referencedSkillId": "SKL-0004"
+          }
+        },
+        "description": "回避成功時、自身へ治癒術を実行するPassive。",
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "passiveSeriesId": "PAS-0008",
+          "abilityRequirementContracts": [
+            {
+              "stat": "MND",
+              "min": 30
+            }
+          ],
+          "thresholdConsumption": {
+            "byStat": [
+              {
+                "stat": "MND",
+                "min": 30
+              }
+            ],
+            "total": 30
+          },
+          "triggerContract": {
+            "type": "ON_EVADE",
+            "scope": "SELF",
+            "engineEvent": "evade",
+            "dispatchMode": "ACTION",
+            "priority": 0,
+            "phase": "REACTIVE",
+            "thresholdRequirements": [],
+            "activationChance": 1,
+            "cooldownTicks": 0
+          },
+          "targetContract": {
+            "mode": "EVENT_CONTEXT",
+            "eventTarget": "SELF"
+          },
+          "executionContract": {
+            "referencedSkillId": "SKL-0004",
+            "effectContracts": [
+              {
+                "type": "HEAL",
+                "power": 30
+              }
+            ],
+            "applyContracts": [],
+            "auraEffectContract": null
+          },
+          "periodicContract": null,
+          "lowHpContract": null,
+          "modifierRefs": {
+            "modIds": [],
+            "effectIds": [],
+            "combatCapabilities": []
+          }
+        }
+      },
+      {
+        "id": "PAS-0009",
+        "name": "受け流し障壁",
+        "status": "active",
+        "tags": [],
+        "passiveSeriesId": "PAS-0009",
+        "params": {
+          "ability_conditions": [
+            {
+              "stat": "VIT",
+              "min": 20
+            },
+            {
+              "stat": "MND",
+              "min": 20
+            }
+          ],
+          "mod_ids": [],
+          "effect_ids": [],
+          "combat_capabilities": [],
+          "trigger": {
+            "type": "ON_BLOCK",
+            "scope": "SELF",
+            "dispatchMode": "ACTION",
+            "priority": 0,
+            "activationChance": 1,
+            "cooldownTicks": 0
+          },
+          "target": {
+            "mode": "EVENT_CONTEXT",
+            "eventTarget": "SELF"
+          },
+          "execution": {
+            "referencedSkillId": "SKL-0005"
+          }
+        },
+        "description": "Block成功時、自身へ守護障壁を実行するPassive。",
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "passiveSeriesId": "PAS-0009",
+          "abilityRequirementContracts": [
+            {
+              "stat": "VIT",
+              "min": 20
+            },
+            {
+              "stat": "MND",
+              "min": 20
+            }
+          ],
+          "thresholdConsumption": {
+            "byStat": [
+              {
+                "stat": "VIT",
+                "min": 20
+              },
+              {
+                "stat": "MND",
+                "min": 20
+              }
+            ],
+            "total": 40
+          },
+          "triggerContract": {
+            "type": "ON_BLOCK",
+            "scope": "SELF",
+            "engineEvent": "block",
+            "dispatchMode": "ACTION",
+            "priority": 0,
+            "phase": "REACTIVE",
+            "thresholdRequirements": [],
+            "activationChance": 1,
+            "cooldownTicks": 0
+          },
+          "targetContract": {
+            "mode": "EVENT_CONTEXT",
+            "eventTarget": "SELF"
+          },
+          "executionContract": {
+            "referencedSkillId": "SKL-0005",
+            "effectContracts": [],
+            "applyContracts": [
+              {
+                "effectId": "BARRIER",
+                "kind": "SHIELD",
+                "logic": "SHIELD",
+                "origin_effect_index": 0,
+                "effect_tag_ids": [],
+                "values": {
+                  "power": 30,
+                  "duration": 2,
+                  "interval": null,
+                  "stackGain": null,
+                  "statusId": "BARRIER",
+                  "modifierStat": null,
+                  "statusPayload": {}
+                },
+                "lifecycle": {
+                  "stackRule": "STACK",
+                  "refreshRule": "KEEP",
+                  "snapshotPolicy": "SNAPSHOT",
+                  "dispelCategory": "SHIELD",
+                  "removeOnDeath": true,
+                  "removeOnBattleEnd": true,
+                  "removable": false,
+                  "effectiveRule": "SUM",
+                  "consumeRule": "FIFO"
+                }
+              }
+            ],
+            "auraEffectContract": null
+          },
+          "periodicContract": null,
+          "lowHpContract": null,
+          "modifierRefs": {
+            "modIds": [],
+            "effectIds": [],
+            "combatCapabilities": []
+          }
+        }
+      },
+      {
+        "id": "PAS-0010",
+        "name": "開戦鼓舞",
+        "status": "active",
+        "tags": [],
+        "passiveSeriesId": "PAS-0010",
+        "params": {
+          "ability_conditions": [
+            {
+              "stat": "STR",
+              "min": 30
+            }
+          ],
+          "mod_ids": [],
+          "effect_ids": [],
+          "combat_capabilities": [],
+          "trigger": {
+            "type": "ON_BATTLE_START",
+            "scope": "SELF",
+            "dispatchMode": "ACTION",
+            "priority": 0,
+            "activationChance": 1,
+            "cooldownTicks": 0
+          },
+          "target": {
+            "mode": "FORMAL_TARGET",
+            "side": "ALLY",
+            "range": "ALL"
+          },
+          "execution": {
+            "referencedSkillId": "SKL-0008"
+          }
+        },
+        "description": "戦闘開始時、味方全体へ戦意高揚を実行するPassive。",
+        "runtimeContracts": {
+          "schemaVersion": 1,
+          "registryPhase": "FORMAL-SKILL-1",
+          "passiveSeriesId": "PAS-0010",
+          "abilityRequirementContracts": [
+            {
+              "stat": "STR",
+              "min": 30
+            }
+          ],
+          "thresholdConsumption": {
+            "byStat": [
+              {
+                "stat": "STR",
+                "min": 30
+              }
+            ],
+            "total": 30
+          },
+          "triggerContract": {
+            "type": "ON_BATTLE_START",
+            "scope": "SELF",
+            "engineEvent": "battle_start",
+            "dispatchMode": "ACTION",
+            "priority": 0,
+            "phase": "REACTIVE",
+            "thresholdRequirements": [],
+            "activationChance": 1,
+            "cooldownTicks": 0
+          },
+          "targetContract": {
+            "mode": "FORMAL_TARGET",
+            "side": "ALLY",
+            "range": "ALL",
+            "randomCount": null,
+            "excludeSelf": false
+          },
+          "executionContract": {
+            "referencedSkillId": "SKL-0008",
+            "effectContracts": [],
+            "applyContracts": [
+              {
+                "effectId": "ATK_UP",
+                "kind": "BUFF",
+                "logic": "BUFF",
+                "origin_effect_index": 0,
+                "effect_tag_ids": [],
+                "values": {
+                  "power": 9,
+                  "duration": 20,
+                  "interval": null,
+                  "stackGain": 1,
+                  "statusId": "ATK_UP",
+                  "modifierStat": "ATK",
+                  "statusPayload": {}
+                },
+                "lifecycle": {
+                  "stackRule": "STACK",
+                  "refreshRule": "KEEP",
+                  "snapshotPolicy": "SNAPSHOT",
+                  "dispelCategory": "BUFF",
+                  "removeOnDeath": true,
+                  "removeOnBattleEnd": true,
+                  "removable": false,
+                  "effectiveRule": "HIGHEST",
+                  "consumeRule": "NONE"
+                }
+              }
+            ],
+            "auraEffectContract": null
+          },
+          "periodicContract": null,
+          "lowHpContract": null,
+          "modifierRefs": {
+            "modIds": [],
+            "effectIds": [],
+            "combatCapabilities": []
           }
         }
       }
