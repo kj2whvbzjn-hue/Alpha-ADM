@@ -6,7 +6,7 @@
     "product_version": "4.0.0",
     "status": "development",
     "description": "AIと人間が共同でゲーム開発する統合開発環境",
-    "updated_at": "2026-09-09T14:58:24.308Z"
+    "updated_at": "2026-09-10T04:02:15.863Z"
   },
   "decisions": [
     {
@@ -198,7 +198,19 @@
       "message": "New Game初期装備をADV-0001 game_runtime.new_game.starter_roster[*].starter_equipmentへData Firstで設定。アルト=木の大剣+木の重装4部位、セリア=木の片手剣+木の盾+木の重装4部位、ロウ=木の短剣+布の軽装4部位、フィン=木の弓+木の矢筒+布の軽装4部位、ミナ=木の杖+布のローブ4部位、エル=木のワンド+布のローブ4部位。starter_inventory_idsは変更しない。"
     },
     {
-      "at": "2026-09-09T14:58:24.308Z",
+      "at": "2026-09-10T06:44:00+09:00",
+      "message": "QST-0003必敗Battleフリーズ修正用Game Data。Monster params.accuracyをDEV-V9-BALANCE-EVIDENCE-EVD-0006のjob/level別combat_values.accuracyからData Firstで反映。Current Monster 4件はいずれもJOB-0001 剣士 Lv1のためaccuracy=1。HP/MP/Attack/AGI/Enemy Budget/AI Binding等の既存値は変更しない。"
+    },
+    {
+      "at": "2026-09-09T23:43:10.344Z",
+      "message": "full json imported through preflight gate"
+    },
+    {
+      "at": "2026-09-10T10:35:28+09:00",
+      "message": "Human確定ルールをBalance Dataへ反映。Skill/Passive習得は共通Skill Point、Level Up時の付与量=1、Skill/Passive既定習得Cost=各1 Skill Point、Respec GoldはSkill個別=50 / Passive個別=50 / 全解除=200を初期Balance値としてADV-0001 game_runtime.skill_progressionへ追加。数値はBalance可変でありSystem固定値ではない。"
+    },
+    {
+      "at": "2026-09-10T04:02:15.863Z",
       "message": "full json imported through preflight gate"
     }
   ],
@@ -16074,10 +16086,11 @@
           "dex": 1,
           "int": 0.7,
           "mnd": 0.8,
-          "luk": 0.3
+          "luk": 0.3,
+          "accuracy": 1
         },
         "description": "実機検証用。Enemy Budget 1。撃破報酬はGold 10＋戦闘トークン1。",
-        "updated_at": "2026-09-08T12:19:48.932Z",
+        "updated_at": "2026-09-09T21:44:00Z",
         "default_formation_position": "FRONTLINE",
         "formalAiBinding": {
           "program_id": "AIP-0001",
@@ -16117,10 +16130,11 @@
           "dex": 1,
           "int": 0.7,
           "mnd": 0.8,
-          "luk": 0.3
+          "luk": 0.3,
+          "accuracy": 1
         },
         "description": "実機検証用。Enemy Budget 2。撃破報酬はGold 20＋戦闘トークン2。",
-        "updated_at": "2026-08-15T23:57:19.007Z",
+        "updated_at": "2026-09-09T21:44:00Z",
         "default_formation_position": "FRONTLINE",
         "formalAiBinding": {
           "program_id": "AIP-0001",
@@ -16158,10 +16172,11 @@
           "dex": 1,
           "int": 0.7,
           "mnd": 0.8,
-          "luk": 0.3
+          "luk": 0.3,
+          "accuracy": 1
         },
         "description": "デモテスト2専用。基礎能力は現行Game内のCランク守護者相当を基準とし、必敗性は固定の異常値ではなくQuest Enemy Budget 400によるBudget編成（40体）で作る。",
-        "updated_at": "2026-08-16T01:20:00.000Z",
+        "updated_at": "2026-09-09T21:44:00Z",
         "default_formation_position": "FRONTLINE",
         "formalAiBinding": {
           "program_id": "AIP-0001",
@@ -16200,10 +16215,11 @@
           "dex": 1,
           "int": 0.7,
           "mnd": 0.8,
-          "luk": 0.3
+          "luk": 0.3,
+          "accuracy": 1
         },
         "description": "",
-        "updated_at": "2026-08-16T03:01:08.292Z",
+        "updated_at": "2026-09-09T21:44:00Z",
         "default_formation_position": "FRONTLINE",
         "formalAiBinding": {
           "program_id": "AIP-0001",
@@ -17297,11 +17313,25 @@
               "weapon": {
                 "str_requirement_two_hand_multiplier": 2
               }
+            },
+            "skill_progression": {
+              "skill_points_per_level": 1,
+              "acquisition_cost": {
+                "skill_default": 1,
+                "passive_default": 1,
+                "skill_by_id": {},
+                "passive_by_id": {}
+              },
+              "respec_gold": {
+                "skill": 50,
+                "passive": 50,
+                "all": 200
+              }
             }
           }
         },
-        "description": "冒険・キャラクター・成長・新規ゲーム・表示レアリティ・戦闘フローの調整値。Game側へ固定せずStudioデータから変更します。Player初期HP/MPはgame_runtime.character.initial_hp / initial_mpを正規ownerとし、旧battle_actor派生式は使用しません。武器2枠・STR両手持ち緩和倍率を調整可能にします。",
-        "updated_at": "2026-09-09T23:10:51+09:00"
+        "description": "冒険・キャラクター・成長・新規ゲーム・表示レアリティ・戦闘フローの調整値。Game側へ固定せずStudioデータから変更します。Player初期HP/MPはgame_runtime.character.initial_hp / initial_mpを正規ownerとし、旧battle_actor派生式は使用しません。武器2枠・STR両手持ち緩和倍率を調整可能にします。 Skill/Passive習得は共通Skill Pointを使用し、Level Up時Skill Point付与量・習得必要量・Respec Gold額はgame_runtime.skill_progressionをBalance正本とします。",
+        "updated_at": "2026-09-10T10:35:28+09:00"
       }
     ],
     "ai_searches": [
